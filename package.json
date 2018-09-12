@@ -7,6 +7,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@lectrum/config-commitlint": "^1.1.0",
     "nodemon": "^1.18.4"
   },
   "dependencies": {
