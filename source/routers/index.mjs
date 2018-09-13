@@ -4,4 +4,10 @@ import { pupils } from './pupils';
 import { parents } from './parents';
 import { classes} from './classes';
 
-export {teachers, subjects, pupils, parents, classes};
+export {
+    teachers,
+    subjects,
+    pupils,
+    parents,
+    classes
+};
