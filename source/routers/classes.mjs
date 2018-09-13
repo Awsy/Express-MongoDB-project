@@ -22,14 +22,21 @@ router.put('/', (req, res)=>{
 //-----------> classId singleton
 
 router.get('/:classId', (req, res)=>{
+    
+    const classId = req.params.classId;
+    res.send(`the class id is: ${ classId }`);
     res.json({})
 });
 
 router.post('/:classId', (req, res)=>{
+    const classId = req.params.classId;
+    res.send(`the class id is: ${ classId }`);
     res.json({})
 });
 
 router.put('/:classId', (req, res)=>{
+    const classId = req.params.classId;
+    res.send(`the class id is: ${ classId }`);
     res.json({})
 });
 
@@ -57,3 +64,17 @@ router.put('/:classId/gradebook', (req, res)=>{
 
 
 export { router as classes}
+
+
+
+
+
+/*
+
+    const customerId = req.params.customerId;
+    const orderId = req.params.orderId;
+    res.send(`Customer id: ${ customerId }, order id: ${ orderId }`);
+
+    
+
+*/
