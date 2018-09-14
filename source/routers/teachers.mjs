@@ -15,8 +15,9 @@ router.put('/', (req, res)=>{
 });
 
 router.delete('/', (req, res)=>{
-    res.json([]);
+        res.json([]);
 });
+
 
 
 //--------> id routing
@@ -39,10 +40,11 @@ router.put('/:teacherId', (req, res)=>{
     res.json({});
 });
 
-// router.delete('/:teacherId', (req, res)=>{
-//     const teacherId = req.params.teacherId;
-//     res.send(`teacherId is: ${ teacherId }`);
-//     res.json({});
-// });
+router.delete('/:teacherId', (req, res)=>{
+    const teacherId = req.params.teacherId;
+    res.send(`teacherId is: ${ teacherId }`);
+    res.json({});
+});
 
 export { router as teachers };
+

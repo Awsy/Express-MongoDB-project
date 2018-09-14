@@ -37,11 +37,11 @@ router.put('/:personId', (req, res)=>{
     res.json({});
 });
 
-// router.delete('/:personId', (req, res)=>{
-    // const personId = req.params.personId;
-    // res.send(`personId is: ${ personId }`);
-//     res.json({});
-// });
+router.delete('/:personId', (req, res)=>{
+    const personId = req.params.personId;
+    res.send(`personId is: ${ personId }`);
+    res.json({});
+});
 
 
 

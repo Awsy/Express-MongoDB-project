@@ -1,7 +1,0 @@
-openapi: 3.0.1
-info:
-  version: 0.0.1
-  title: School API
-  description: School API
-servers:
-  - url: 'http://localhost:3000'

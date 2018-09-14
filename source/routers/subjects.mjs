@@ -6,17 +6,18 @@ router.get('/', (req, res)=>{
     res.json([]);
 });
 
-router.post('/', (req, res)=>{
+router.post('/d', (req, res)=>{
     res.json([]);
 });
+
 
 router.put('/', (req, res)=>{
     res.json([]);
 });
 
-// router.delete('/', (req, res)=>{
-//     res.json([]);
-// });
+router.delete('/', (req, res)=>{
+    res.json([]);
+});
 
 
 //-------------> subjectID singleton
@@ -38,11 +39,11 @@ router.put('/:subjectId', (req, res)=>{
     res.json({});
 });
 
-// router.delete('/:subjectId', ()=>{
-    // const subjectId = req.params.subjectId;
-    // res.send(`subjectId is: ${ subjectId }`);
-//     res.json({});
-// });
+router.delete('/:subjectId', ()=>{
+    const subjectId = req.params.subjectId;
+    res.send(`subjectId is: ${ subjectId }`);
+    res.json({});
+});
 
 
 //---------> seasons collection
@@ -85,12 +86,12 @@ router.put('/:subjectId/seasons/:seasonId', (req, res)=>{
     res.json({});
 });
 
-// router.delete('/:subjectId/seasons/:seasonId', (req, res)=>{
-    // const subjectId = req.params.subjectId;
-    // const seasonId = req.params.seasonId;
-    // res.send(`subjectId is: ${ subjectId }, seasonId is: ${ seasonId }`);
-//     res.json({});
-// });
+router.delete('/:subjectId/seasons/:seasonId', (req, res)=>{
+    const subjectId = req.params.subjectId;
+    const seasonId = req.params.seasonId;
+    res.send(`subjectId is: ${ subjectId }, seasonId is: ${ seasonId }`);
+    res.json({});
+});
 
 //-----------> lessons collection
 
@@ -137,13 +138,13 @@ router.put(':subjectId/seasons/:seasonId/lessons/:lessonId', (req, res)=>{
     res.json({});
 });
 
-// router.delete(':subjectId/seasons/:seasonId/lessons/:lessonId', (req, res)=>{
-    // const subjectId = req.params.subjectId;
-    // const seasonId = req.params.seasonId;
-    // const lessonId = req.params.lessonId;
-    // res.send(`subjectId is: ${ subjectId }, seasonId is: ${ seasonId }, lessonId is: ${ lessonId }`);
-//     res.json({});
-// });
+router.delete(':subjectId/seasons/:seasonId/lessons/:lessonId', (req, res)=>{
+    const subjectId = req.params.subjectId;
+    const seasonId = req.params.seasonId;
+    const lessonId = req.params.lessonId;
+    res.send(`subjectId is: ${ subjectId }, seasonId is: ${ seasonId }, lessonId is: ${ lessonId }`);
+    res.json({});
+});
 
 
 

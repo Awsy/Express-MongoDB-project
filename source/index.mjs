@@ -20,6 +20,11 @@ const app = express();
 // Middleware
 app.use(express.json());
 
+app.use((req, res, next) => {
+    console.log(`method: ${req.method} - path: ${req.path}`);
+    next();
+});
+
 // Routes
 app.use('/teachers', teachers);
 app.use('/subjects', subjects);
@@ -29,7 +34,7 @@ app.use('/classes', classes);
 
 // Resolve swagger file
 const openApiDocument = jsYaml.safeLoad(
-    fs.readFileSync(path.resolve('swagger/api.yaml'), 'utf-8'),
+    fs.readFileSync(path.resolve('swagger/openapi.yaml'), 'utf-8'),
 );
 
 // Serve documentation
@@ -42,3 +47,9 @@ app.use(
 app.listen(port, () => {
     console.log(`server API is up on port ${port}`);
 });
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.log('Unhandled Rejection at:', reason.stack || reason)
+    // Recommended: send the information to sentry.io
+    // or whatever crash reporting service you use
+  });

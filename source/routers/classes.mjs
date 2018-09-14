@@ -2,7 +2,7 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res) => {
     res.json([]);
 });
 
@@ -14,35 +14,27 @@ router.put('/', (req, res)=>{
     res.json([]);
 });
 
-// router.delete('/', (req, res)=>{
-//     res.json([]);
-// });
-
+router.delete('/', (req, res)=>{
+        res.json([]);
+});
 
 //-----------> classId singleton
 
 router.get('/:classId', (req, res)=>{
-    
-    const classId = req.params.classId;
-    res.send(`the class id is: ${ classId }`);
-    res.json({})
+    res.json({});
 });
 
 router.post('/:classId', (req, res)=>{
-    const classId = req.params.classId;
-    res.send(`the class id is: ${ classId }`);
-    res.json({})
+    res.json({});
 });
 
 router.put('/:classId', (req, res)=>{
-    const classId = req.params.classId;
-    res.send(`the class id is: ${ classId }`);
-    res.json({})
+    res.json({});
 });
 
-// router.delete('/:classId', (req, res)=>{
-//     res.json({})
-// });
+router.delete('/:classId', (req, res)=>{
+    res.json({});
+});
 
 //-----------> gradebooks collection
 
@@ -58,9 +50,9 @@ router.put('/:classId/gradebook', (req, res)=>{
     res.json([]);
 });
 
-// router.delete('/:classId/gradebook', (req, res)=>{
-//     res.json([]);
-// });
+router.delete('/:classId/gradebook', (req, res)=>{
+    res.json([]);
+});
 
 
 export { router as classes}

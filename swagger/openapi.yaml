@@ -1,0 +1,119 @@
+openapi: 3.0.1
+info:
+  version: 0.0.1
+  title: School API
+  description: School API
+servers:
+  - url: 'http://localhost:3000'
+  
+paths:
+  /teachers:
+    get:
+      summary: returns something
+      operationId: getTeachers
+      responses:
+        '200':
+          description: returns ok    
+    post:
+      summary: returns something
+      security:
+        - BasicAuth: []
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: returns ok 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    put:
+      summary: returns something
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: returns ok
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      summary: returns something
+      responses:
+        '200':
+          description: returns ok
+  /teachers/{teacherId}:
+    get:
+      summary: returns something
+      parameters: 
+        - name: teacherId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns ok
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    post:
+      summary: returns something
+      parameters: 
+        - name: teacherId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns ok    
+          
+    put:
+      summary: returns something
+      parameters: 
+        - name: teacherId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns ok
+          
+    delete:
+      summary: returns something
+      parameters: 
+        - name: teacherId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns ok
+          
+components:
+  schemas:
+     User:
+      properties:
+        id:
+          type: integer
+          example: 34
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
