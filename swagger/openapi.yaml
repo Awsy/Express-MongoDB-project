@@ -9,15 +9,16 @@ servers:
 paths:
   /teachers:
     get:
-      summary: returns something
-      operationId: getTeachers
+      summary: returns teachers collection
       responses:
         '200':
-          description: returns ok    
+          description: displays teachers collection successfully
+        '404':
+          description: teachers collection was not found
+        '500': 
+          description: server not found
     post:
-      summary: returns something
-      security:
-        - BasicAuth: []
+      summary: inserting changes and data
       requestBody:
         required: true
         content: 
@@ -26,7 +27,7 @@ paths:
               $ref: '#/components/schemas/User'
       responses:
         '200':
-          description: returns ok 
+          description: changes were implemented successfully 
           content:
             application/json:
               schema:
@@ -34,7 +35,7 @@ paths:
                 items:
                   type: object
     put:
-      summary: returns something
+      summary: editing data
       requestBody:
         required: true
         content: 
@@ -43,19 +44,21 @@ paths:
               $ref: '#/components/schemas/User'
       responses:
         '200':
-          description: returns ok
+          description: changes are saved
           content: 
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
     delete:
-      summary: returns something
+      summary: data was removed
       responses:
         '200':
-          description: returns ok
+          description: data was removed successfully
+        '404':
+          description: data not found
   /teachers/{teacherId}:
     get:
-      summary: returns something
+      summary: returns teachers Id
       parameters: 
         - name: teacherId
           in: path
@@ -64,7 +67,11 @@ paths:
             type: string
       responses:
         '200':
-          description: returns ok
+          description: teachers Id was successfully returned
+        '404':
+          description: teachers is not existed
+        '500':
+          description: servers not found
           content:
             application/json:
               schema:

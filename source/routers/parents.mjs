@@ -24,8 +24,6 @@ router.get('/:parentId', (req, res)=>{
 });
 
 router.post('/:parentId', (req, res)=>{
-    const parentId = req.params.parentId;
-    res.send(`parentId is: ${ parentId }`);
     res.json({});
 });
 
@@ -51,36 +49,25 @@ router.get('/:parentId/pupils', (req, res)=>{
     res.json([]);
 });
 
-// router.delete('/:parentId/pupils', (req, res)=>{
-//     res.json([]);
-// });
+router.delete('/:parentId/pupils', (req, res)=>{
+    res.json([]);
+});
 
 
 //----------> pupilsId singleton
 router.get('/:parentId/pupils/:personId', (req, res)=>{
-    const parentId = req.params.parentId;
-    const personId = req.params.personId;
-    res.send(`parentId is: ${ parentId }, personId is: ${ personId}`);
     res.json({});
 });
 
 router.post('/:parentId/pupils/:personId', (req, res)=>{
-    const parentId = req.params.parentId;
-    const personId = req.params.personId;
-    res.send(`parentId is: ${ parentId }, personId is: ${ personId}`);
     res.json({});
 });
 
 router.put('/:parentId/pupils/:personId', (req, res)=>{
-    const parentId = req.params.parentId;
-    const personId = req.params.personId;
-    res.send(`parentId is: ${ parentId }, personId is: ${ personId}`);
     res.json({});
 });
 
 router.delete('/:parentId/pupils/:personId', (req, res)=>{
-    const { parentId, personId } = req.params;
-    res.send(`parentId is: ${ parentId }, personId is: ${ personId}`);
     res.json({});
 });
 

@@ -48,8 +48,3 @@ app.listen(port, () => {
     console.log(`server API is up on port ${port}`);
 });
 
-process.on('unhandledRejection', (reason, promise) => {
-    console.log('Unhandled Rejection at:', reason.stack || reason)
-    // Recommended: send the information to sentry.io
-    // or whatever crash reporting service you use
-  });
