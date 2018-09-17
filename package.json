@@ -1,13 +1,19 @@
 {
   "name": "express-app",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --experimental-modules ./source/index.mjs"
+    "start": "nodemon --experimental-modules ./source/index.mjs",
+    "lint:javascript": "jest --projects 'jest/jest.eslint.config.json'"
   },
   "license": "MIT",
   "devDependencies": {
     "@lectrum/config-commitlint": "^1.1.0",
+    "@lectrum/eslint-config-core": "^1.1.2",
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.6.0",
+    "jest": "^23.6.0",
+    "jest-runner-eslint": "^0.6.0",
     "nodemon": "^1.18.4"
   },
   "dependencies": {
