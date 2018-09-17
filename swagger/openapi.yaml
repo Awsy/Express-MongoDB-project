@@ -56,6 +56,9 @@ paths:
           description: data was removed successfully
         '404':
           description: data not found
+        '500':
+          description: server not found
+          
   /teachers/{teacherId}:
     get:
       summary: returns teachers Id
@@ -78,7 +81,7 @@ paths:
                 type: object
           
     post:
-      summary: returns something
+      summary: input data and changes
       parameters: 
         - name: teacherId
           in: path
@@ -87,10 +90,18 @@ paths:
             type: string
       responses:
         '200':
-          description: returns ok    
+          description: returns the success status if data insertion or changes were occurred
+        '404':
+          description: teacherId was not found
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
           
     put:
-      summary: returns something
+      summary: applies modifications and changes
       parameters: 
         - name: teacherId
           in: path
@@ -99,7 +110,17 @@ paths:
             type: string
       responses:
         '200':
-          description: returns ok
+          description: displays success status when data were modified
+        '403':
+          description: editing data is forbidden
+        '405':
+          description: the editing method is not allowed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
           
     delete:
       summary: returns something
@@ -111,7 +132,851 @@ paths:
             type: string
       responses:
         '200':
-          description: returns ok
+          description: data was successfully removed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+  /subjects:
+    get:
+      summary: returns subjects collection
+      responses:
+        '200':
+          description: displays subjects collection successfully
+        '404':
+          description: subjects collection was not found
+        '500': 
+          description: server not found
+    
+    post:
+      summary: inserting changes and data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes were implemented successfully 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    put:
+      summary: editing data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes are saved
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      summary: data was removed
+      responses:
+        '200':
+          description: data was removed successfully
+        '404':
+          description: data not found
+      
+  /subjects/{subjectId}:
+    get:
+      summary: returns subjectId Id
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: subject Id was successfully returned
+        '404':
+          description: subjectId is not existed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    post:
+      summary: input data and changes
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns the success status if data insertion or changes were occurred
+        '404':
+          description: subjectId was not found
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    put:
+      summary: applies modifications and changes
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: displays success status when data were modified
+        '403':
+          description: editing data is forbidden
+        '405':
+          description: the editing method is not allowed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    delete:
+      summary: returns something
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: data was successfully removed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+                
+  /seasons:
+    get:
+      summary: returns seasons collection
+      responses:
+        '200':
+          description: displays seasons collection successfully
+        '404':
+          description: teachers collection was not found
+        '500': 
+          description: server not found
+    post:
+      summary: inserting changes and data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes were implemented successfully 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    put:
+      summary: editing data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes are saved
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      summary: data was removed
+      responses:
+        '200':
+          description: data was removed successfully
+        '404':
+          description: data not found
+          
+  /seasons/{seasonId}:
+    get:
+      summary: returns seasonId Id
+      parameters: 
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: season Id was successfully returned
+        '404':
+          description: season Id is not existed
+        '500':
+          description: server was not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    post:
+      summary: input data and changes
+      parameters: 
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns the success status if data insertion or changes were occurred
+        '404':
+          description: subjectId was not found
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    put:
+      summary: applies modifications and changes
+      parameters: 
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: displays success status when data were modified
+        '403':
+          description: editing data is forbidden
+        '405':
+          description: the editing method is not allowed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    delete:
+      summary: removes season Id
+      parameters: 
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: data was successfully removed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+                
+  /lessons:
+    get:
+      summary: returns lessons collection
+      responses:
+        '200':
+          description: displays lessons collection successfully
+        '404':
+          description: lessons collection was not found
+        '500': 
+          description: server not found
+    
+    post:
+      summary: inserting changes and data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes were implemented successfully 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    put:
+      summary: editing data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes are saved
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      summary: data was removed
+      responses:
+        '200':
+          description: data was removed successfully
+        '404':
+          description: data not found
+          
+  /lessons/{lessonId}:
+    get:
+      summary: returns lessonId Id
+      parameters: 
+        - name: lessonId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: season Id was successfully returned
+        '404':
+          description: season Id is not existed
+        '500':
+          description: server was not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    post:
+      summary: input data and changes
+      parameters: 
+        - name: lessonId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns the success status if data insertion or changes were occurred
+        '404':
+          description: subjectId was not found
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    put:
+      summary: applies modifications and changes
+      parameters: 
+        - name: lessonId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: displays success status when data were modified
+        '403':
+          description: editing data is forbidden
+        '405':
+          description: the editing method is not allowed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    delete:
+      summary: removes season Id
+      parameters: 
+        - name: lessonId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: data was successfully removed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+  
+  /pupils:
+    get:
+      summary: returns pupils collection
+      responses:
+        '200':
+          description: displays pupils collection successfully
+        '404':
+          description: pupils collection was not found
+        '500': 
+          description: server not found
+    post:
+      summary: inserting changes and data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes were implemented successfully 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    put:
+      summary: editing data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes are saved
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      summary: data was removed
+      responses:
+        '200':
+          description: data was removed successfully
+        '404':
+          description: data not found
+    
+  /pupils/{personId}:
+    get:
+      summary: returns personId Id
+      parameters: 
+        - name: personId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: season Id was successfully returned
+        '404':
+          description: season Id is not existed
+        '500':
+          description: server was not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    post:
+      summary: input data and changes
+      parameters: 
+        - name: personId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns the success status if data insertion or changes were occurred
+        '404':
+          description: subjectId was not found
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    put:
+      summary: applies modifications and changes
+      parameters: 
+        - name: personId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: displays success status when data were modified
+        '403':
+          description: editing data is forbidden
+        '405':
+          description: the editing method is not allowed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    delete:
+      summary: removes season Id
+      parameters: 
+        - name: personId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: data was successfully removed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+                
+  /parents:
+    get:
+      summary: returns parents collection
+      responses:
+        '200':
+          description: displays parents collection successfully
+        '404':
+          description: parents collection was not found
+        '500': 
+          description: server not found
+    post:
+      summary: inserting changes and data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes were implemented successfully 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    put:
+      summary: editing data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes are saved
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      summary: data was removed
+      responses:
+        '200':
+          description: data was removed successfully
+        '404':
+          description: data not found
+          
+  /parents/{parentId}:
+    get:
+      summary: returns parentId Id
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: season Id was successfully returned
+        '404':
+          description: season Id is not existed
+        '500':
+          description: server was not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    post:
+      summary: input data and changes
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns the success status if data insertion or changes were occurred
+        '404':
+          description: subjectId was not found
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    put:
+      summary: applies modifications and changes
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: displays success status when data were modified
+        '403':
+          description: editing data is forbidden
+        '405':
+          description: the editing method is not allowed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    delete:
+      summary: removes parent Id
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: data was successfully removed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+  /classes:
+    get:
+      summary: returns classes collection
+      responses:
+        '200':
+          description: displays classes collection successfully
+        '404':
+          description: classes collection was not found
+        '500': 
+          description: server not found
+    post:
+      summary: inserting changes and data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes were implemented successfully 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    put:
+      summary: editing data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes are saved
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      summary: data was removed
+      responses:
+        '200':
+          description: data was removed successfully
+        '404':
+          description: data not found
+          
+  /classes/{classId}:
+    get:
+      summary: returns classId Id
+      parameters: 
+        - name: classId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: season Id was successfully returned
+        '404':
+          description: season Id is not existed
+        '500':
+          description: server was not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    post:
+      summary: input data and changes
+      parameters: 
+        - name: classId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns the success status if data insertion or changes were occurred
+        '404':
+          description: subjectId was not found
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    put:
+      summary: applies modifications and changes
+      parameters: 
+        - name: classId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: displays success status when data were modified
+        '403':
+          description: editing data is forbidden
+        '405':
+          description: the editing method is not allowed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    delete:
+      summary: removes class Id
+      parameters: 
+        - name: classId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: data was successfully removed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+                
+  /gradebook:
+    get:
+      summary: returns gradebook collection
+      responses:
+        '200':
+          description: displays gradebook collection successfully
+        '404':
+          description: gradebook collection was not found
+        '500': 
+          description: server not found
+    post:
+      summary: inserting changes and data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes were implemented successfully 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    put:
+      summary: editing data
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes are saved
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      summary: data was removed
+      responses:
+        '200':
+          description: data was removed successfully
+        '404':
+          description: data not found
+    
           
 components:
   schemas:
