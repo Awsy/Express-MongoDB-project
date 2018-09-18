@@ -7,11 +7,11 @@ import swaggerUi from 'swagger-ui-express';
 
 // Instruments
 import {
-    teachers, 
+    teachers,
     subjects,
     pupils,
     parents,
-    classes
+    classes,
 } from './routers';
 
 const port = process.env.PORT || 3000;
@@ -21,7 +21,7 @@ const app = express();
 app.use(express.json());
 
 app.use((req, res, next) => {
-    console.log(`method: ${req.method} - path: ${req.path}`);
+    console.log(`method: ${req.method} - path: ${req.path}`); // eslint-disable-line
     next();
 });
 
@@ -34,7 +34,7 @@ app.use('/classes', classes);
 
 // Resolve swagger file
 const openApiDocument = jsYaml.safeLoad(
-    fs.readFileSync(path.resolve('swagger/openapi.yaml'), 'utf-8'),
+    fs.readFileSync(path.resolve('swagger/openapi.yaml'), 'utf-8'), // eslint-disable-line
 );
 
 // Serve documentation
@@ -45,6 +45,6 @@ app.use(
 );
 
 app.listen(port, () => {
-    console.log(`server API is up on port ${port}`);
+    console.log(`server API is up on port ${port}`); // eslint-disable-line
 });
 
