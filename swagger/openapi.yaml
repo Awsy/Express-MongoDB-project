@@ -9,10 +9,17 @@ servers:
 paths:
   /teachers:
     get:
+      #deprecated: true
       summary: returns teachers collection
+      tags: 
+        - teachers
       responses:
         '200':
           description: displays teachers collection successfully
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'
         '404':
           description: teachers collection was not found
         '500': 
@@ -271,9 +278,15 @@ paths:
               schema:
                 type: object
                 
-  /seasons:
+  /subjects/{subjectId}/seasons:
     get:
       summary: returns seasons collection
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
       responses:
         '200':
           description: displays seasons collection successfully
@@ -283,6 +296,12 @@ paths:
           description: server not found
     post:
       summary: inserting changes and data
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
       requestBody:
         required: true
         content: 
@@ -300,6 +319,12 @@ paths:
                   type: object
     put:
       summary: editing data
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
       requestBody:
         required: true
         content: 
@@ -315,16 +340,27 @@ paths:
                 $ref: '#/components/schemas/User'
     delete:
       summary: data was removed
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
       responses:
         '200':
           description: data was removed successfully
         '404':
           description: data not found
           
-  /seasons/{seasonId}:
+  /subjects/{subjectId}/seasons/{seasonId}:
     get:
       summary: returns seasonId Id
       parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
         - name: seasonId
           in: path
           required: true
@@ -345,13 +381,18 @@ paths:
     post:
       summary: input data and changes
       parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
         - name: seasonId
           in: path
           required: true
           schema: 
             type: string
       responses:
-        '200':
+        '201':
           description: returns the success status if data insertion or changes were occurred
         '404':
           description: subjectId was not found
@@ -365,6 +406,11 @@ paths:
     put:
       summary: applies modifications and changes
       parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
         - name: seasonId
           in: path
           required: true
@@ -386,7 +432,13 @@ paths:
           
     delete:
       summary: removes season Id
+      #need to add the below parameters to the rest of the paths
       parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
         - name: seasonId
           in: path
           required: true
@@ -402,9 +454,20 @@ paths:
               schema:
                 type: object
                 
-  /lessons:
+  /subjects/{subjectId}/seasons/{seasonId}/lessons:
     get:
       summary: returns lessons collection
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
       responses:
         '200':
           description: displays lessons collection successfully
@@ -415,6 +478,17 @@ paths:
     
     post:
       summary: inserting changes and data
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
       requestBody:
         required: true
         content: 
@@ -432,6 +506,17 @@ paths:
                   type: object
     put:
       summary: editing data
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
       requestBody:
         required: true
         content: 
@@ -447,20 +532,41 @@ paths:
                 $ref: '#/components/schemas/User'
     delete:
       summary: data was removed
+      parameters: 
+        - name: subjectId
+          in: path
+          required: true
+          schema: 
+            type: string
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
       responses:
         '200':
           description: data was removed successfully
         '404':
           description: data not found
           
-  /lessons/{lessonId}:
+  /subjects/{subjectId}/seasons/{seasonId}/lessons/{lessonId}:
     get:
       summary: returns lessonId Id
       parameters: 
-        - name: lessonId
+        - name: subjectId
           in: path
           required: true
           schema: 
+            type: string
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
+        - name: lessonId
+          in: path
+          required: true
+          schema:
             type: string
       responses:
         '200':
@@ -477,10 +583,20 @@ paths:
     post:
       summary: input data and changes
       parameters: 
-        - name: lessonId
+        - name: subjectId
           in: path
           required: true
           schema: 
+            type: string
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
+        - name: lessonId
+          in: path
+          required: true
+          schema:
             type: string
       responses:
         '200':
@@ -497,10 +613,20 @@ paths:
     put:
       summary: applies modifications and changes
       parameters: 
-        - name: lessonId
+        - name: subjectId
           in: path
           required: true
           schema: 
+            type: string
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
+        - name: lessonId
+          in: path
+          required: true
+          schema:
             type: string
       responses:
         '200':
@@ -519,10 +645,20 @@ paths:
     delete:
       summary: removes season Id
       parameters: 
-        - name: lessonId
+        - name: subjectId
           in: path
           required: true
           schema: 
+            type: string
+        - name: seasonId
+          in: path
+          required: true
+          schema: 
+            type: string
+        - name: lessonId
+          in: path
+          required: true
+          schema:
             type: string
       responses:
         '200':
@@ -583,6 +719,8 @@ paths:
           description: data was removed successfully
         '404':
           description: data not found
+        '500':
+          description: server not found
     
   /pupils/{personId}:
     get:
@@ -795,6 +933,185 @@ paths:
             application/json:
               schema:
                 type: object
+                
+  /parents/{parentId}/pupils:
+    get:
+      summary: returns pupils collection
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: displays pupils collection successfully
+        '404':
+          description: pupils collection was not found
+        '500': 
+          description: server not found
+    post:
+      summary: inserting changes and data
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes were implemented successfully 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    put:
+      summary: editing data
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: changes are saved
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      summary: data was removed
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: data was removed successfully
+        '404':
+          description: data not found
+        '500':
+          description: server not found
+    
+  /parents/{parentId}/pupils/{personId}:
+    get:
+      summary: returns personId Id
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+            
+        - name: personId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: season Id was successfully returned
+        '404':
+          description: season Id is not existed
+        '500':
+          description: server was not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    post:
+      summary: input data and changes
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+        - name: personId
+          in: path
+          required: true
+          schema: 
+            type: string 
+      responses:
+        '200':
+          description: returns the success status if data insertion or changes were occurred
+        '404':
+          description: subjectId was not found
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    put:
+      summary: applies modifications and changes
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+        - name: personId
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: displays success status when data were modified
+        '403':
+          description: editing data is forbidden
+        '405':
+          description: the editing method is not allowed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    delete:
+      summary: removes season Id
+      parameters: 
+        - name: parentId
+          in: path
+          required: true
+          schema: 
+            type: string
+        - name: personId
+          in: path
+          required: true
+          schema: 
+            type: string      
+      responses:
+        '200':
+          description: data was successfully removed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+  #----------------------------------------              
           
   /classes:
     get:
@@ -927,9 +1244,15 @@ paths:
               schema:
                 type: object
                 
-  /gradebook:
+  /classes/{classId}/gradebook:
     get:
       summary: returns gradebook collection
+      parameters: 
+        - name: classId
+          in: path
+          required: true
+          schema: 
+            type: string
       responses:
         '200':
           description: displays gradebook collection successfully
@@ -939,6 +1262,12 @@ paths:
           description: server not found
     post:
       summary: inserting changes and data
+      parameters: 
+        - name: classId
+          in: path
+          required: true
+          schema: 
+            type: string
       requestBody:
         required: true
         content: 
@@ -956,6 +1285,12 @@ paths:
                   type: object
     put:
       summary: editing data
+      parameters: 
+        - name: classId
+          in: path
+          required: true
+          schema: 
+            type: string
       requestBody:
         required: true
         content: 
@@ -971,20 +1306,474 @@ paths:
                 $ref: '#/components/schemas/User'
     delete:
       summary: data was removed
+      parameters: 
+        - name: classId
+          in: path
+          required: true
+          schema: 
+            type: string
       responses:
         '200':
           description: data was removed successfully
         '404':
           description: data not found
-    
+          
+#------------ here we start building the component   
           
 components:
   schemas:
-     User:
+    User:
+      type: object
       properties:
         id:
           type: integer
           example: 34
+    Teacher:
+      type: object
+      properties: 
+        hash: 
+          type: string
+          minLength: 3
+          maxLength: 15
+          example: "teacher"
+        name:
+          type: object
+          properties:
+            first: 
+              type: string
+              example: Andrey
+            last:
+              type: string
+              example: Prisniak
+        image:
+          type: string
+          example: http://example.com/image.jpg
+        dateOfBirth:
+          type: string
+          format: date
+          example: 22/04/1990
+        emails:
+          type: array
+          items: 
+            type: object
+            properties:
+              email:
+                type: string
+                example: test@mail.com
+              primary:
+                type: boolean
+                example: true
+        phones: 
+          type: array
+          items:
+            type: object
+            properties: 
+              phone: 
+                type: string
+                example: to be determined
+              primary:
+                type: boolean
+                example: true
+                
+        sex: 
+          type: string
+          enum: [male, female]
+          example: female
+          
+        social:
+          type: object
+          properties:
+            facebook: 
+              type: string
+              example: aws shkara
+            linkedIn: 
+              type: string
+              example: aws-shkara
+            skype: 
+              type: string
+              example: aws.shkara
+            telegram: 
+              type: string
+              example: Atawsy  
+          
+        subjects:
+          type: array
+          items:
+            type: object
+            properties:
+              subject:
+                type: string
+                example: http://example.com/api/subjects/123
+                
+        description:
+          type: string
+          example: information about teachers
+          
+        started:
+          type: string
+          format: date
+          example: 17/09/2018
+          
+        created:
+          type: string
+          format: date
+          example: 17/09/2018
+     
+    subject:
+      type: object
+      properties:
+        hash: 
+          type: string
+          minLength: 2
+          maxLength: 15
+          example: "subjects"
+        title:
+          type: string
+          example: teachers
+        image:
+          type: string
+          example: http://example.com/image1.jpg  
+        seasons:
+          type: array
+          items:
+            type: object
+            properties:
+              seasons: 
+                type: string
+                example: season
+        description:
+          type: string
+          example: information about seasons
+        created:
+          type: string
+          format: date
+          example: 17/09/2018
+    season:
+      type: object
+      properties:
+        hash:
+          type: string
+          minLength: 3
+          maxLength: 15
+          example: "season"
+        order:
+          type: integer
+          example: 3
+        title:
+          type: string
+          example: season
+        image:
+          type: string
+          example: http://example.com/image2.jpg
+        subject:
+          type: string
+          example: math
+        lessons:
+          type: array
+          items: 
+            type: object
+            properties:
+              lesson:
+                type: string
+                example: http://example.com/api/lessons/12
+                
+        description:
+          type: string
+          example: information about seasons
+        created:
+          type: string
+          format: date
+          example: 18/09/2018
+          
+    lesson:
+      type: object
+      properties:
+        hash:
+          type: string
+          minLength: 3
+          maxLength: 15
+          example: "lesson"
+        order:
+          type: integer
+          example: 2
+        title:
+          type: string
+          example: season
+        image:
+          type: string
+          example: http://example.com/image3.jpg
+        subject:
+          type: string
+          example: http://example.com/api/lessons/13
+        description:
+          type: string
+          example: information about lessons
+        created:
+          type: string
+          format: date
+          example: 18/09/2018
+          
+    person:
+      type: object
+      properties:
+        hash:
+          type: string
+          minLength: 3
+          maxLength: 15
+          example: "person"
+        name:
+          type: object
+          properties:
+            first:
+              type: string
+              example: Aws
+            last:
+              type: string
+              example: Shkara
+        image:
+          type: string
+          example: http://example.com/image4.jpg      
+        dateOfBirth:
+          type: string
+          format: date
+          example: 29/08/1989
+        emails:
+          type: array
+          items:
+            type: object
+            properties:
+              email:
+                type: string
+                example: testing@mail.com
+              primary:
+                type: boolean
+                example: true
+        phones:
+          type: array
+          items:
+            type: object
+            properties:
+              phone:
+                type: string
+                example: tbd-----
+              primary:
+                type: boolean
+                example: true
+        sex: 
+          type: string
+          enum: [male, female]
+          example: female
+        social:
+          type: object
+          properties:
+            facebook: 
+              type: string
+              example: aws shkara
+            linkedIn: 
+              type: string
+              example: aws-shkara
+            skype: 
+              type: string
+              example: aws.shkara
+            telegram: 
+              type: string
+              example: Atawsy
+        class:
+          type: object
+          example: http://example.com/api/classes/13
+        parents:
+          type: array
+          items: 
+            type: object
+            properties:
+              parent:
+                type: string
+                example: http://example.com/api/parents/135
+        description:
+          type: string
+          example: information about parents
+        started:
+          type: string
+          format: date
+          example: 18/09/2018   
+        created:
+          type: string
+          format: date
+          example: 18/09/2018 
+          
+    parent:
+      type: object
+      properties:
+        hash:
+          type: string
+          minLength: 3
+          maxLength: 15
+          example: "person"
+        name:
+          type: object
+          properties:
+            first:
+              type: string
+              example: Aws
+            last:
+              type: string
+              example: Shkara
+        image:
+          type: string
+          example: http://example.com/image4.jpg      
+        dateOfBirth:
+          type: string
+          format: date
+          example: 29/08/1989
+        emails:
+          type: array
+          items:
+            type: object
+            properties:
+              email:
+                type: string
+                example: testing@mail.com
+              primary:
+                type: boolean
+                example: true
+        phones:
+          type: array
+          items:
+            type: object
+            properties:
+              phone:
+                type: string
+                example: tbd-----
+              primary:
+                type: boolean
+                example: true
+        sex: 
+          type: string
+          enum: [male, female]
+          example: male
+        social:
+          type: object
+          properties:
+            facebook: 
+              type: string
+              example: aws shkara
+            linkedIn: 
+              type: string
+              example: aws-shkara
+            skype: 
+              type: string
+              example: aws.shkara
+            telegram: 
+              type: string
+              example: Atawsy 
+        pupils:
+          type: array
+          items: 
+            type: object
+            properties:
+              person:
+                type: string
+                example: http://example.com/api/pupils/135
+        description:
+          type: string
+          example: information about parents
+        started:
+          type: string
+          format: date
+          example: 18/09/2018   
+        created:
+          type: string
+          format: date
+          example: 18/09/2018
+    class:
+      type: object
+      properties:
+        hash:
+          type: string
+          minLength: 3
+          maxLength: 13
+          example: class
+        order:
+          type: integer
+          example: 7
+        title:
+          type: string
+          example: geography class
+        image:
+          type: string
+          example: http://example.com/image5.jpg
+        room:
+          type: integer
+          example: 2
+        floor:
+          type: integer
+          example: 5
+        gradebooks:
+          type: array
+          items:
+            type: object
+            properties:
+              gradebook:
+                type: string
+                example: http://example.com/api/gradebook/135
+        description:
+          type: string
+          example: information about class
+        created:
+          type: string
+          format: date
+          example: 18/09/2018 
+    gradebook:
+      type: object
+      properties:
+        hash:
+          type: string
+          minLength: 3
+          maxLength: 15
+          example: gradebook
+        image:
+          type: string
+          example: http://example.com/image6.jpg
+        year:
+          type: integer
+          example: 2018
+        class:
+          type: string
+          example: http://example.com/api/classes/135
+        records:
+          type: array
+          items:
+            type: object
+            properties:
+              personHash:
+                type: string
+                example: user123
+              teacherHash:
+                type: string
+                example: teacher12
+              subjectHash:
+                type: string
+                example: historySubject
+              seasonHash:
+                type: string
+                example: 1st season
+              lessonHash:
+                type: string
+                example: geographyLesson
+              mark:
+                type: integer
+                minimum: 1
+                exclusiveMinimum: true
+                maximum: 12
+                exclusiveMaximum: true
+                example: 12
+        description:
+          type: string
+          example: information about class
+        created:
+          type: string
+          format: date
+          example: 18/09/2018         
   securitySchemes:
     BasicAuth:
       type: http
