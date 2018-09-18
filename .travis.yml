@@ -1,0 +1,17 @@
+language: node_js
+
+node_js:
+  - "8.12.0"
+
+sudo: false
+
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  # Update Node.js modules
+  - "test ! -d node_modules || npm prune"
+  - "test ! -d node_modules || npm rebuild"
+script:
+  - "npm run lint:javascript"
