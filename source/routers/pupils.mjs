@@ -1,41 +1,37 @@
 import express from 'express';
- 
 const router = express.Router();
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res) => {
     res.json([]);
 });
 
-router.post('/', (req, res)=>{
+router.post('/', (req, res) => {
     res.json([]);
 });
 
-router.put('/', (req, res)=>{
+router.put('/', (req, res) => {
     res.json([]);
 });
 
-router.delete('/', (req, res)=>{
+router.delete('/', (req, res) => {
     res.json([]);
 });
 
 //-----------> personId singleton
-router.get('/:personId', (req, res)=>{
+router.get('/:personId', (req, res) => {
     res.json({});
 });
 
-router.post('/:personId', (req, res)=>{
+router.post('/:personId', (req, res) => {
     res.json({});
 });
 
-router.put('/:personId', (req, res)=>{
+router.put('/:personId', (req, res) => {
     res.json({});
 });
 
-router.delete('/:personId', (req, res)=>{
+router.delete('/:personId', (req, res) => {
     res.json({});
 });
-
-
-
 
 export { router as pupils };

@@ -1,75 +1,74 @@
 import express from 'express';
-
 const router = express.Router();
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res) => {
     res.json([]);
 });
 
-router.post('/', (req, res)=>{
+router.post('/', (req, res) => {
     res.json([]);
 });
 
-router.put('/', (req, res)=>{
+router.put('/', (req, res) => {
     res.json([]);
 });
 
-router.delete('/', (req, res)=>{
+router.delete('/', (req, res) => {
     res.json([]);
 });
 
 //-----------> parentId singleton
-router.get('/:parentId', (req, res)=>{
+router.get('/:parentId', (req, res) => {
     res.json({});
 });
 
-router.post('/:parentId', (req, res)=>{
+router.post('/:parentId', (req, res) => {
     res.json({});
 });
 
-router.put('/:parentId', (req, res)=>{
+router.put('/:parentId', (req, res) => {
     res.json({});
 });
 
-router.delete('/:parentId', (req, res)=>{
+router.delete('/:parentId', (req, res) => {
     res.json({});
 });
 
 
 //----------> pupils collection
-router.get('/:parentId/pupils', (req, res)=>{
+router.get('/:parentId/pupils', (req, res) => {
     res.json([]);
 });
 
-router.get('/:parentId/pupils', (req, res)=>{
+router.get('/:parentId/pupils', (req, res) => {
     res.json([]);
 });
 
-router.get('/:parentId/pupils', (req, res)=>{
+router.get('/:parentId/pupils', (req, res) => {
     res.json([]);
 });
 
-router.delete('/:parentId/pupils', (req, res)=>{
+router.delete('/:parentId/pupils', (req, res) => {
     res.json([]);
 });
 
 
 //----------> pupilsId singleton
-router.get('/:parentId/pupils/:personId', (req, res)=>{
+router.get('/:parentId/pupils/:personId', (req, res) => {
     res.json({});
 });
 
-router.post('/:parentId/pupils/:personId', (req, res)=>{
+router.post('/:parentId/pupils/:personId', (req, res) => {
     res.json({});
 });
 
-router.put('/:parentId/pupils/:personId', (req, res)=>{
+router.put('/:parentId/pupils/:personId', (req, res) => {
     res.json({});
 });
 
-router.delete('/:parentId/pupils/:personId', (req, res)=>{
+router.delete('/:parentId/pupils/:personId', (req, res) => {
     res.json({});
 });
 
 
-export { router as parents}
+export { router as parents };

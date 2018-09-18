@@ -9,5 +9,5 @@ export {
     subjects,
     pupils,
     parents,
-    classes
+    classes,
 };

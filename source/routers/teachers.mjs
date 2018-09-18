@@ -1,42 +1,38 @@
 import express from 'express';
- 
 const router = express.Router();
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res) => {
     res.json([]);
 });
 
-router.post('/', (req, res)=>{
+router.post('/', (req, res) => {
     res.json([]);
 });
 
-router.put('/', (req, res)=>{
+router.put('/', (req, res) => {
     res.json([]);
 });
 
-router.delete('/', (req, res)=>{
-        res.json([]);
+router.delete('/', (req, res) => {
+    res.json([]);
 });
-
-
 
 //--------> id routing
 
-router.get('/:teacherId', (req, res)=>{
+router.get('/:teacherId', (req, res) => {
     res.json({});
 });
 
-router.post('/:teacherId', (req, res)=>{
+router.post('/:teacherId', (req, res) => {
     res.json({});
 });
 
-router.put('/:teacherId', (req, res)=>{
+router.put('/:teacherId', (req, res) => {
     res.json({});
 });
 
-router.delete('/:teacherId', (req, res)=>{
+router.delete('/:teacherId', (req, res) => {
     res.json({});
 });
 
 export { router as teachers };
-
