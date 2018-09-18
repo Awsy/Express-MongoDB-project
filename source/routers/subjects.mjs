@@ -2,20 +2,20 @@ import express from 'express';
  
 const router = express.Router();
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res) => {
     res.json([]);
 });
 
-router.post('/d', (req, res)=>{
+router.post('/d', (req, res) => {
     res.json([]);
 });
 
 
-router.put('/', (req, res)=>{
+router.put('/', (req, res) => {
     res.json([]);
 });
 
-router.delete('/', (req, res)=>{
+router.delete('/', (req, res) => {
     res.json([]);
 });
 
