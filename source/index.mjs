@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import jsYaml from 'js-yaml';
 import express from 'express';
+import winston from 'winston';
 import swaggerUi from 'swagger-ui-express';
 
 // Instruments
@@ -15,13 +16,25 @@ import {
 } from './routers';
 
 const port = process.env.PORT || 3000;
-const app = express();
+export const app = express();
+
+const logger = winston.createLogger({
+    level:      'info',
+    transports: [
+        new winston.transports.Console({
+            format: winston.format.simple(),
+        }),
+    ],
+});
 
 // Middleware
 app.use(express.json());
 
 app.use((req, res, next) => {
-    console.log(`method: ${req.method} - path: ${req.path}`); // eslint-disable-line
+    if (process.env.NODE_ENV === 'development') {
+        logger.info(`${new Date()} method: ${req.method} - path: ${req.path}`);
+        logger.info(JSON.stringify(req.body, null, 2));
+    }
     next();
 });
 
@@ -43,6 +56,10 @@ app.use(
     swaggerUi.serve,
     swaggerUi.setup(openApiDocument),
 );
+
+app.use((err, req,res, next) => {
+    res.status(500).send('something wrong');
+});
 
 app.listen(port, () => {
     console.log(`server API is up on port ${port}`); // eslint-disable-line

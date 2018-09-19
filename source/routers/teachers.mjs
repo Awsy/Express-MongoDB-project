@@ -1,11 +1,12 @@
 import express from 'express';
+import { authentication } from '../helpers';
 const router = express.Router();
 
 router.get('/', (req, res) => {
     res.json([]);
 });
 
-router.post('/', (req, res) => {
+router.post('/', [ authentication ], (req, res) => {
     res.json([]);
 });
 
