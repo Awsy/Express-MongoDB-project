@@ -29,7 +29,6 @@ const logger = winston.createLogger({
 
 // Middleware
 app.use(express.json());
-
 app.use((req, res, next) => {
     if (process.env.NODE_ENV === 'development') {
         logger.info(`${new Date()} method: ${req.method} - path: ${req.path}`);
@@ -57,8 +56,8 @@ app.use(
     swaggerUi.setup(openApiDocument),
 );
 
-app.use((err, req,res, next) => {
-    res.status(500).send('something wrong');
+app.use((error, req, res) => {
+    res.status(500).send(`something wrong ${error.name}`);
 });
 
 app.listen(port, () => {

@@ -18,7 +18,6 @@ router.delete('/', (req, res) => {
     res.json([]);
 });
 
-
 //-------------> subjectID singleton
 router.get('/:subjectId', (req, res) => {
     res.json({});
