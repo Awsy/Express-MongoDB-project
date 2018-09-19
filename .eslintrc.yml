@@ -18,3 +18,9 @@ rules:
     arrow-spacing: [2, { before: true, after: true }]
     key-spacing: [ 2, { beforeColon: false, afterColon: true, align: value } ]
     comma-dangle: [ 2, { arrays: always-multiline, objects: always-multiline, functions: always-multiline, imports: always-multiline, exports: always-multiline }]
+    lines-around-comment: [2, {
+        beforeBlockComment: true,
+        afterBlockComment:  false,
+        beforeLineComment:  true,
+        afterLineComment:   false
+    }]
