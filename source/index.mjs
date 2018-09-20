@@ -1,6 +1,7 @@
 // Core
 import fs from 'fs';
 import path from 'path';
+import helmet from 'helmet';
 import jsYaml from 'js-yaml';
 import express from 'express';
 import winston from 'winston';
@@ -29,6 +30,7 @@ const logger = winston.createLogger({
 
 // Middleware
 app.use(express.json());
+app.use(helmet()); // using Helmet middleware for app security
 app.use((req, res, next) => {
     if (process.env.NODE_ENV === 'development') {
         logger.info(`${new Date()} method: ${req.method} - path: ${req.path}`);

@@ -19,6 +19,7 @@
   "dependencies": {
     "express": "^4.16.3",
     "express-rate-limit": "^3.2.0",
+    "helmet": "^3.13.0",
     "js-yaml": "^3.12.0",
     "moment": "^2.22.2",
     "swagger-ui-express": "^4.0.1",

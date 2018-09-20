@@ -9,7 +9,7 @@ const limiter = rateLimit({
     headers:  false, // do not send custom rate limit header with limit and remaining
 });
 
-router.get('/', (req, res) => {
+router.get('/', limiter, (req, res) => {
     res.json([]);
 });
 
@@ -17,28 +17,28 @@ router.post('/', [ limiter, authentication ], (req, res) => {
     res.json([]);
 });
 
-router.put('/', (req, res) => {
+router.put('/', [ limiter, authentication ], (req, res) => {
     res.json([]);
 });
 
-router.delete('/', (req, res) => {
+router.delete('/', [ limiter, authentication ], (req, res) => {
     res.json([]);
 });
 
 //--------> id routing
-router.get('/:teacherId', (req, res) => {
+router.get('/:teacherId', limiter, (req, res) => {
     res.json({});
 });
 
-router.post('/:teacherId', (req, res) => {
+router.post('/:teacherId', [ limiter, authentication ], (req, res) => {
     res.json({});
 });
 
-router.put('/:teacherId', (req, res) => {
+router.put('/:teacherId', [ limiter, authentication ], (req, res) => {
     res.json({});
 });
 
-router.delete('/:teacherId', (req, res) => {
+router.delete('/:teacherId', [ limiter, authentication ], (req, res) => {
     res.json({});
 });
 
