@@ -6,7 +6,7 @@ import jsYaml from 'js-yaml';
 import express from 'express';
 import winston from 'winston';
 import swaggerUi from 'swagger-ui-express';
-
+import './db';
 // Instruments
 import {
     teachers,
@@ -65,4 +65,3 @@ app.use((error, req, res) => {
 app.listen(port, () => {
     console.log(`server API is up on port ${port}`); // eslint-disable-line
 });
-
