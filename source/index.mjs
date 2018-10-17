@@ -1,4 +1,5 @@
 // Core
+import moment from 'moment';
 import helmet from 'helmet';
 import express from 'express';
 import winston from 'winston';
@@ -28,7 +29,7 @@ app.use(express.json());
 app.use(helmet()); // using Helmet middleware for app security
 app.use((req, res, next) => {
     if (process.env.NODE_ENV === 'development') {
-        logger.info(`${new Date()} method: ${req.method} - path: ${req.path}`);
+        logger.info(`${moment().format('YYYY-MM-DD HH:mm:ss:SSS')} method: ${req.method} - path: ${req.path}`);
         logger.info(JSON.stringify(req.body, null, 2));
     }
     next();
@@ -46,7 +47,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiDocument));
 
 // eslint-disable-next-line
 app.use((error, req, res, next) => {
-    res.status(500).send(`something wrong ${error.name}`);
+    res.status(400).send(`Something wrong. Error: ${error.name}. Reason: ${error.message}`);
 });
 
 app.listen(port, () => {
