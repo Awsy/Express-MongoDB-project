@@ -1,5 +1,5 @@
 import { authentication } from './authentication';
 
-export {
-    authentication,
-};
+import { openApiDocument, validator } from './openApiValidator';
+
+export { authentication, openApiDocument, validator };

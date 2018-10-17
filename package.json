@@ -1,9 +1,9 @@
 {
   "name": "express-app",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "DEBUG='db:*,main:*,router:*' nodemon",
     "lint:javascript": "jest --projects 'jest/jest.eslint.config.json'"
   },
   "license": "MIT",
@@ -17,7 +17,9 @@
     "nodemon": "^1.18.4"
   },
   "dependencies": {
+    "debug": "^4.1.0",
     "express": "^4.16.3",
+    "express-openapi-validate": "^0.4.3",
     "express-rate-limit": "^3.2.0",
     "helmet": "^3.13.0",
     "js-yaml": "^3.12.0",

@@ -1,24 +1,19 @@
 // Core
-import fs from 'fs';
-import path from 'path';
 import helmet from 'helmet';
-import jsYaml from 'js-yaml';
 import express from 'express';
 import winston from 'winston';
 import swaggerUi from 'swagger-ui-express';
-import './db';
+import dg from 'debug';
+
 // Instruments
-import {
-    teachers,
-    subjects,
-    pupils,
-    parents,
-    classes,
-} from './routers';
+import './db';
+import { teachers, subjects, pupils, parents, classes } from './routers';
+import { openApiDocument } from './helpers';
 
 const port = process.env.PORT || 3000;
 export const app = express();
 
+const debugSrv = dg('main:server');
 const logger = winston.createLogger({
     level:      'info',
     transports: [
@@ -46,22 +41,14 @@ app.use('/pupils', pupils);
 app.use('/parents', parents);
 app.use('/classes', classes);
 
-// Resolve swagger file
-const openApiDocument = jsYaml.safeLoad(
-    fs.readFileSync(path.resolve('swagger/openapi.yaml'), 'utf-8'), // eslint-disable-line
-);
-
 // Serve documentation
-app.use(
-    '/docs',
-    swaggerUi.serve,
-    swaggerUi.setup(openApiDocument),
-);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiDocument));
 
-app.use((error, req, res) => {
+// eslint-disable-next-line
+app.use((error, req, res, next) => {
     res.status(500).send(`something wrong ${error.name}`);
 });
 
 app.listen(port, () => {
-    console.log(`server API is up on port ${port}`); // eslint-disable-line
+    debugSrv(`server API is up on port ${port}`);
 });
