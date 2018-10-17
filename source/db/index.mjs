@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
+import dg from 'debug';
 
+const debugDb = dg('db:connect');
 mongoose.Promise = global.Promise;
 
 const mongooseOptions = {
@@ -12,7 +14,6 @@ const mongooseOptions = {
     useNewUrlParser:   true,
     useCreateIndex:    true,
 };
-
 let firstConnectTimeout = null;
 const mongoConnect = () => {
     const mongoDB = mongoose.connect(
@@ -22,11 +23,11 @@ const mongoConnect = () => {
 
     mongoDB
         .then(() => {
-            console.log(`school has been connected`); // eslint-disable-line
+            debugDb('school has been connected');
             clearTimeout(firstConnectTimeout);
         })
         .catch((error) => {
-            console.log(error); // eslint-disable-line
+            debugDb(error);
             clearTimeout(firstConnectTimeout);
             firstConnectTimeout = setTimeout(mongoConnect, mongooseOptions.reconnectInterval);
         });

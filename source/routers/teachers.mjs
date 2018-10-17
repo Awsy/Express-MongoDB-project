@@ -1,12 +1,14 @@
 // Core
 import express from 'express';
 import rateLimit from 'express-rate-limit';
+import dg from 'debug';
 
 // Instruments
 import { authentication } from '../helpers';
 import { teachers } from '../odm';
 import { validator } from '../helpers';
 
+const debug = dg('router:teachers');
 const router = express.Router();
 const limiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
@@ -20,6 +22,7 @@ router.get('/', [ limiter, validator.validate('get', '/teachers') ], async (req,
 
         res.json(collection);
     } catch (error) {
+        debug(error.message);
         res.status(400).json({
             message: error.message,
         });

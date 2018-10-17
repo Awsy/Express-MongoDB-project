@@ -3,15 +3,17 @@ import helmet from 'helmet';
 import express from 'express';
 import winston from 'winston';
 import swaggerUi from 'swagger-ui-express';
-import './db';
+import dg from 'debug';
 
 // Instruments
+import './db';
 import { teachers, subjects, pupils, parents, classes } from './routers';
 import { openApiDocument } from './helpers';
 
 const port = process.env.PORT || 3000;
 export const app = express();
 
+const debugSrv = dg('main:server');
 const logger = winston.createLogger({
     level:      'info',
     transports: [
@@ -48,5 +50,5 @@ app.use((error, req, res, next) => {
 });
 
 app.listen(port, () => {
-    console.log(`server API is up on port ${port}`); // eslint-disable-line
+    debugSrv(`server API is up on port ${port}`);
 });
