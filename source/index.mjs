@@ -42,7 +42,8 @@ app.use('/classes', classes);
 // Serve documentation
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiDocument));
 
-app.use((error, req, res) => {
+// eslint-disable-next-line
+app.use((error, req, res, next) => {
     res.status(500).send(`something wrong ${error.name}`);
 });
 
