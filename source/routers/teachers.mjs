@@ -1,11 +1,7 @@
 import express from 'express';
 import rateLimit from 'express-rate-limit';
-import {
-    authentication
-} from '../helpers';
-import {
-    teachers,
-} from '../odm';
+import { authentication } from '../helpers';
+import { teachers } from '../odm';
 const router = express.Router();
 
 const limiter = rateLimit({
@@ -34,31 +30,51 @@ router.get('/', limiter, async (req, res) => {
 
 });
 
-router.post('/', [limiter, authentication], async (req, res) => {
+router.post('/', [ limiter, authentication ], async (req, res) => {
     try {
         const document = await teachers.create(req.body);
 
         res.json(document);
     } catch (error) {
         res.status(400).json({
-            message: error.message
+            message: error.message,
         });
     }
 });
 
-router.put('/', [limiter, authentication], (req, res) => {
-    res.json([]);
+router.put('/', [ limiter, authentication ], async (req, res) => {
+    try {
+        const collection = await teachers.update();
+
+        res.json(collection);
+    } catch (error) {
+        res.status(400).json({
+            message: error.message,
+        });
+    }
 });
 
-router.delete('/', [limiter, authentication], (req, res) => {
-    res.json([]);
+router.delete('/', [ limiter, authentication ], async (req, res) => {
+    try {
+        const collection = await teachers.deleteMany();
+
+        res.json(collection);
+    } catch (error) {
+        res.status(400).json({
+            message: error.message,
+        });
+    }
 });
 
 //--------> id routing
 router.get('/:teacherId', limiter, async (req, res) => {
     const { teacherId } = req.params;
     try {
-        const document = await teachers.findOne({_id: teacherId}, {name: 1});
+        const document = await teachers.findOne({
+            _id: teacherId
+        }, {
+            name: 1
+        });
         res.json(document);
     } catch (error) {
         res.status(400).json({
