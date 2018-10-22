@@ -1,9 +1,9 @@
 export const authentication = (req, res, next) => {
     const token = req.headers[ 'x-token' ];
 
-    if (token === 'awsy') {
+    if (token === 'aws') {
         return next();
     }
 
-    res.status(401).json({message: 'authentication is not recognized'});
+    res.status(401).json({ message: 'authentication is not recognized' });
 };

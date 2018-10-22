@@ -1,6 +1,4 @@
-import {
-    Teachers as TeachersModel
-} from '../models';
+import { Teachers as TeachersModel } from '../models';
 
 export class Teachers {
     constructor(data) {
@@ -20,4 +18,16 @@ export class Teachers {
 
         return document;
     }
-};
+
+    async updateTeacher() {
+        const document = await this.model.teachers.updateTeacher();
+
+        return document;
+    }
+
+    async removeTeacher() {
+        const document = await this.model.teachers.removeTeacher();
+
+        return document;
+    }
+}

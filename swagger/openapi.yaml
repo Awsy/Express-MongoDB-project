@@ -31,7 +31,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -48,14 +48,14 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Teacher'
     delete:
       summary: data was removed
       responses:
@@ -164,7 +164,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -181,14 +181,14 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Teacher'
     delete:
       summary: data was removed
       responses:
@@ -307,7 +307,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -330,14 +330,14 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Teacher'
     delete:
       summary: data was removed
       parameters: 
@@ -494,7 +494,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -522,14 +522,14 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Teacher'
     delete:
       summary: data was removed
       parameters: 
@@ -687,7 +687,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -704,14 +704,14 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Teacher'
     delete:
       summary: data was removed
       responses:
@@ -820,7 +820,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -837,14 +837,14 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Teacher'
     delete:
       summary: data was removed
       responses:
@@ -963,7 +963,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -986,14 +986,14 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Teacher'
     delete:
       summary: data was removed
       parameters: 
@@ -1130,7 +1130,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -1147,14 +1147,14 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Teacher'
     delete:
       summary: data was removed
       responses:
@@ -1273,7 +1273,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -1296,14 +1296,14 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Teacher'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Teacher'
     delete:
       summary: data was removed
       parameters: 
@@ -1322,14 +1322,10 @@ paths:
           
 components:
   schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 34
     Teacher:
       type: object
+      required:
+        - hash
       properties: 
         hash: 
           type: string
@@ -1747,7 +1743,7 @@ components:
             properties:
               personHash:
                 type: string
-                example: user123
+                example: Teacher123
               teacherHash:
                 type: string
                 example: teacher12

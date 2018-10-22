@@ -1,6 +1,4 @@
-import {
-    teachers
-} from '../odm';
+import { teachers } from '../odm';
 
 export class Teachers {
     constructor(data) {
@@ -8,14 +6,30 @@ export class Teachers {
     }
 
     async readTeacherById() {
-        const document = await teachers.findById(this.data);
+        const id = this.data;
+        const document = await teachers.findById(id).lean();
 
         return document;
     }
 
     async createTeacher() {
-        const document = await teachers.create(this.data);
+        const data = this.data;
+        const document = await teachers.create(data);
 
         return document;
     }
-};
+
+    async updateTeacher() {
+        const { id, data } = this.data;
+        const document = await teachers.findByIdAndUpdate(id, data);
+
+        return document;
+    }
+
+    async removeTeacher() {
+        const id = this.data;
+        const document = await teachers.findByIdAndDelete(id);
+
+        return document;
+    }
+}

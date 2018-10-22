@@ -29,7 +29,11 @@ app.use(express.json());
 app.use(helmet()); // using Helmet middleware for app security
 app.use((req, res, next) => {
     if (process.env.NODE_ENV === 'development') {
-        logger.info(`${moment().format('YYYY-MM-DD HH:mm:ss:SSS')} method: ${req.method} - path: ${req.path}`);
+        logger.info(
+            `${moment().format('YYYY-MM-DD HH:mm:ss:SSS')} method: ${req.method} - path: ${
+                req.path
+            }`,
+        );
         logger.info(JSON.stringify(req.body, null, 2));
     }
     next();
