@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 import dg from 'debug';
 
+//Plugin
+import { lastModif } from '../helpers';
+mongoose.plugin(lastModif, { index: true });
+
 const debugDb = dg('db:connect');
 mongoose.Promise = global.Promise;
 

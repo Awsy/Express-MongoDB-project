@@ -2,7 +2,8 @@
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import dg from 'debug';
-import uuid from 'uuid/v4';
+
+// import uuid from 'uuid/v4';
 
 //Instruments
 import { authentication } from '../helpers';
