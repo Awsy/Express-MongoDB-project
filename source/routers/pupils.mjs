@@ -2,8 +2,6 @@ import express from 'express';
 import rateLimit from 'express-rate-limit';
 import dg from 'debug';
 
-//import uuid from 'uuid/v4';
-
 import { authentication } from '../helpers';
 import { Persons } from '../controllers';
 import { validator } from '../helpers';
