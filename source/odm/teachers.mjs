@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 import dg from 'debug';
 
-// import { lastModif } from '../helpers';
-
 const debug = dg('schema:teachers');
 
 const schema = new mongoose.Schema(
@@ -78,7 +76,5 @@ const schema = new mongoose.Schema(
 schema.pre('findOne', function() {
     debug('findOne is triggered');
 });
-
-// schema.plugin(lastModif, { index: true });
 
 export default mongoose.model('teachers', schema);
