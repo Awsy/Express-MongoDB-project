@@ -22,9 +22,9 @@ const limiter = rateLimit({
 router.get('/', [ limiter, validator.validate('get', '/subjects') ], async (req, res) => {
     try {
         const subjects = new Subjects();
-        const collection = await subjects.readSubjectById();
-
-        res.json(collection);
+        const subjectsColl = await subjects.readSubjects();
+        debug(`subjects: ${JSON.stringify(subjectsColl)}`);
+        res.json(subjectsColl);
     } catch (error) {
         debug(error.message);
         res.status(400).json({
@@ -164,8 +164,9 @@ router.get(
     async (req, res) => {
         try {
             const seasons = new Seasons();
-            const collection = await seasons.readSeasonById();
-            res.json(collection);
+            const seasonsColl = await seasons.readSubjects();
+            debug(`subjects: ${JSON.stringify(seasonsColl)}`);
+            res.json(seasonsColl);
         } catch (error) {
             debug(error.message);
             res.status(400).json({
@@ -244,7 +245,11 @@ router.get(
 
 router.post(
     '/:subjectId/seasons/:seasonId',
-    [ limiter, authentication, validator.validate('post', '/subjects/{subjectId}/seasons/{seasonId}') ],
+    [
+        limiter,
+        authentication,
+        validator.validate('post', '/subjects/{subjectId}/seasons/{seasonId}'),
+    ],
     async (req, res) => {
         const { seasonId } = req.params;
         try {
@@ -261,7 +266,11 @@ router.post(
 
 router.put(
     '/:subjectId/seasons/:seasonId',
-    [ limiter, authentication, validator.validate('put', '/subjects/{subjectId}/seasons/{seasonId}') ],
+    [
+        limiter,
+        authentication,
+        validator.validate('put', '/subjects/{subjectId}/seasons/{seasonId}'),
+    ],
     async (req, res) => {
         const { seasonId } = req.params;
         try {
@@ -278,7 +287,11 @@ router.put(
 
 router.delete(
     '/:subjectId/seasons/:seasonId',
-    [ limiter, authentication, validator.validate('delete', '/subjects/{subjectId}/seasons/{seasonId}') ],
+    [
+        limiter,
+        authentication,
+        validator.validate('delete', '/subjects/{subjectId}/seasons/{seasonId}'),
+    ],
     async (req, res) => {
         const { seasonId } = req.params;
         try {
@@ -301,8 +314,9 @@ router.get(
     async (req, res) => {
         try {
             const lessons = new Lessons();
-            const collection = await lessons.readLessonById();
-            res.json(collection);
+            const lessonsColl = await lessons.readSubjects();
+            debug(`subjects: ${JSON.stringify(lessonsColl)}`);
+            res.json(lessonsColl);
         } catch (error) {
             debug(error.message);
             res.status(400).json({
@@ -335,7 +349,11 @@ router.post(
 
 router.put(
     '/:subjectId/seasons/:seasonId/lessons',
-    [ limiter, authentication, validator.validate('put', '/subjects/{subjectId}/seasons/{seasonId}/lessons') ],
+    [
+        limiter,
+        authentication,
+        validator.validate('put', '/subjects/{subjectId}/seasons/{seasonId}/lessons'),
+    ],
     async (req, res) => {
         try {
             const lessons = new Lessons();
@@ -375,7 +393,10 @@ router.delete(
 
 router.get(
     ':subjectId/seasons/:seasonId/lessons/:lessonId',
-    [ limiter, validator.validate('get', '/subjects/{subjectId}/seasons/{seasonId}/lessons/{lessonId}') ],
+    [
+        limiter,
+        validator.validate('get', '/subjects/{subjectId}/seasons/{seasonId}/lessons/{lessonId}'),
+    ],
     async (req, res) => {
         const { lessonId } = req.params;
         try {

@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+import dg from 'debug';
+
+const debug = dg('schema:subjects');
 
 const schema = new mongoose.Schema(
     {
@@ -8,19 +11,32 @@ const schema = new mongoose.Schema(
             unique:  true,
             index:   true,
         },
-        title:   String,
+        title: {
+            type:      String,
+            required:  true,
+            minLength: 3,
+        },
         image:   String,
         seasons: [
             {
-                season: mongoose.Schema.Types.ObjectId,
+                season: {
+                    type:     mongoose.Schema.Types.ObjectId,
+                    required: true,
+                },
             },
         ],
-        description: String,
-        created:     String,
+        description: {
+            type:      String,
+            minLength: 10,
+        },
+        created: Date,
     },
     {
         id: false,
     },
 );
+schema.pre('findOne', function() {
+    debug('findOne for subjects is triggered');
+});
 
 export default mongoose.model('subjects', schema);

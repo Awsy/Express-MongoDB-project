@@ -5,6 +5,12 @@ export class Persons {
         this.data = data;
     }
 
+    async readPersons() {
+        const readPersons = await persons.find();
+
+        return readPersons;
+    }
+
     async readPersonById() {
         const id = this.data;
         const document = await persons.findById(id).lean();

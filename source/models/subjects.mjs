@@ -5,6 +5,12 @@ export class Subjects {
         this.data = data;
     }
 
+    async readSubjects() {
+        const subjectsColl = await subjects.find();
+
+        return subjectsColl;
+    }
+
     async readSubjectById() {
         const id = this.data;
         const subject = await subjects.findById(id).lean();

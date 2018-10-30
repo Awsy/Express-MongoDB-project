@@ -7,6 +7,12 @@ export class Lessons {
         };
     }
 
+    async readLessons() {
+        const collection = await this.model.lessons.readLessons();
+
+        return collection;
+    }
+
     async readLessonById() {
         const document = await this.model.lessons.readLessonById();
 

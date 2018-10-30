@@ -5,6 +5,12 @@ export class Gradebook {
         this.data = data;
     }
 
+    async readGradebooks() {
+        const gradebooksColl = await gradebook.find();
+
+        return gradebooksColl;
+    }
+
     async readGradebookById() {
         const id = this.data;
         const document = await gradebook.findById(id).lean();

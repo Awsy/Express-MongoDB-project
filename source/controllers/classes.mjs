@@ -7,6 +7,12 @@ export class Classes {
         };
     }
 
+    async readClasses() {
+        const collection = await this.model.classes.readClasses();
+
+        return collection;
+    }
+
     async readClassById() {
         const document = await this.model.classes.readClassById();
 

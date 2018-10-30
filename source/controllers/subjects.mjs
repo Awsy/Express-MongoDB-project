@@ -7,6 +7,12 @@ export class Subjects {
         };
     }
 
+    async readSubjects() {
+        const collection = await this.model.subjects.readSubjects();
+
+        return collection;
+    }
+
     async readSubjectById() {
         const document = await this.model.subjects.readSubjectById();
 

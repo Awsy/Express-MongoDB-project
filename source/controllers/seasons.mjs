@@ -7,6 +7,12 @@ export class Seasons {
         };
     }
 
+    async readSeasons() {
+        const collection = await this.model.seasons.readSeasons();
+
+        return collection;
+    }
+
     async readSeasonById() {
         const document = await this.model.seasons.readSeasonById();
 

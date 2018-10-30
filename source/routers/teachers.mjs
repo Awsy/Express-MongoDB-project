@@ -8,7 +8,7 @@ import { authentication } from '../helpers';
 import { Teachers } from '../controllers';
 import { validator } from '../helpers';
 
-const debug = dg('router:teachers');
+const debug = dg('awsy:router:teachers');
 const router = express.Router();
 const limiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
@@ -19,8 +19,9 @@ const limiter = rateLimit({
 router.get('/', [ limiter, validator.validate('get', '/teachers') ], async (req, res) => {
     try {
         const teachers = new Teachers();
-        const collection = await teachers.readTeacherById();
-        res.json(collection);
+        const teachersColl = await teachers.readTeachers();
+        debug(`teachers: ${JSON.stringify(teachersColl)}`);
+        res.json(teachersColl);
     } catch (error) {
         debug(error.message);
         res.status(400).json({

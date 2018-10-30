@@ -7,6 +7,12 @@ export class Teachers {
         };
     }
 
+    async readTeachers() {
+        const collection = await this.model.teachers.readTeachers();
+
+        return collection;
+    }
+
     async readTeacherById() {
         const document = await this.model.teachers.readTeacherById();
 

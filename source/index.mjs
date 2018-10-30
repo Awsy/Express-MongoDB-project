@@ -14,7 +14,9 @@ import { openApiDocument } from './helpers';
 const port = process.env.PORT || 3000;
 export const app = express();
 
-const debugSrv = dg('main:server');
+const debugSrv = dg('awsy:main:server');
+
+// Winston config
 const logger = winston.createLogger({
     level:      'info',
     transports: [
@@ -23,6 +25,10 @@ const logger = winston.createLogger({
         }),
     ],
 });
+
+if (process.env.NODE_ENV === 'development') {
+    logger.add(new winston.transports.File({filename: 'awsy.log'}));
+}
 
 // Middleware
 app.use(express.json());

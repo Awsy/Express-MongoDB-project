@@ -20,8 +20,9 @@ const limiter = rateLimit({
 router.get('/', [ limiter, validator.validate('get', '/classes') ], async (req, res) => {
     try {
         const classes = new Classes();
-        const collection = await classes.readClassById();
-        res.status(200).json(collection);
+        const classesColl = await classes.readSubjects();
+        debug(`subjects: ${JSON.stringify(classesColl)}`);
+        res.status(200).json(classesColl);
     } catch ({ message }) {
         debug(message);
         res.status(400).json({
@@ -156,8 +157,9 @@ router.get(
     async (req, res) => {
         try {
             const gradebook = new Gradebook();
-            const collection = await gradebook.readGradebookById();
-            res.json(collection);
+            const gradebookColl = await gradebook.readTeachers();
+            debug(`teachers: ${JSON.stringify(gradebookColl)}`);
+            res.json(gradebookColl);
         } catch (error) {
             debug(error.message);
             res.status(400).json({

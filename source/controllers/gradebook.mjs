@@ -7,6 +7,12 @@ export class Gradebook {
         };
     }
 
+    async readGradebooks() {
+        const collection = await this.model.gradebook.readGradebooks();
+
+        return collection;
+    }
+
     async readGradebookById() {
         const document = await this.model.gradebook.readGradebookById();
 

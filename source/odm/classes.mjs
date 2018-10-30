@@ -8,18 +8,27 @@ const schema = new mongoose.Schema(
             unique:   true,
             index:    true,
         },
-        order:     Number,
-        title:     String,
-        image:     String,
-        room:      Number,
-        floor:     Number,
-        gradebook: [
+        order: Number,
+        title: String,
+        image: {
+            type:     String,
+            required: true,
+        },
+        room:       Number,
+        floor:      Number,
+        gradebooks: [
             {
-                gradebook: mongoose.Schema.Types.ObjectId,
+                gradebook: {
+                    type:     mongoose.Schema.Types.ObjectId,
+                    required: true,
+                },
             },
         ],
-        description: String,
-        created:     Date,
+        description: {
+            type:      String,
+            minLength: 10,
+        },
+        created: Date,
     },
     {
         id: false,

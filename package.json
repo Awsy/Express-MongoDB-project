@@ -3,7 +3,7 @@
   "version": "0.0.6",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG='db:*,main:*,router:*,schema:*' nodemon",
+    "start": "DEBUG='awsy:db:*,awsy:main:*,awsy:router:*,awsy:schema:*' nodemon",
     "lint:javascript": "jest --projects 'jest/jest.eslint.config.json'"
   },
   "license": "MIT",

@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+import dg from 'debug';
+
+const debug = dg('schema:gradebook');
 
 const schema = new mongoose.Schema(
     {
@@ -8,9 +11,12 @@ const schema = new mongoose.Schema(
             unique:   true,
             index:    true,
         },
-        image:   String,
-        year:    Number,
-        class:   mongoose.Schema.Types.ObjectId,
+        image: String,
+        year:  Number,
+        class: {
+            type:     mongoose.Schema.Types.ObjectId,
+            required: true,
+        },
         records: [
             {
                 personHash: {
@@ -38,11 +44,19 @@ const schema = new mongoose.Schema(
                 },
             },
         ],
-        description: String,
-        created:     Date,
+        description: {
+            type:      String,
+            minLength: 10,
+        },
+        created: Date,
     },
     {
         id: false,
     },
 );
+
+schema.pre('findOne', function() {
+    debug('findOne for gradebook is triggered');
+});
+
 export default mongoose.model('gradebook', schema);

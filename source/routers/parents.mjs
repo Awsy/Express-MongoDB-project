@@ -21,8 +21,9 @@ const limiter = rateLimit({
 router.get('/', [ limiter, validator.validate('get', '/parents') ], async (req, res) => {
     try {
         const parents = new Parents();
-        const collection = await parents.readParentById();
-        res.json(collection);
+        const parentsColl = await parents.readSubjects();
+        debug(`subjects: ${JSON.stringify(parentsColl)}`);
+        res.json(parentsColl);
     } catch (error) {
         debug(error.message);
         res.status(400).json({
@@ -158,8 +159,9 @@ router.get(
     async (req, res) => {
         try {
             const persons = new Persons();
-            const collection = await persons.readPersonById();
-            res.json(collection);
+            const personsColl = await persons.readSubjects();
+            debug(`subjects: ${JSON.stringify(personsColl)}`);
+            res.json(personsColl);
         } catch (error) {
             debug(error.message);
             res.status(400).json({

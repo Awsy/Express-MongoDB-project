@@ -5,6 +5,12 @@ export class Classes {
         this.data = data;
     }
 
+    async readClasses() {
+        const classesColl = await classes.find();
+
+        return classesColl;
+    }
+
     async readClassById() {
         const id = this.data;
         const document = await classes.findById(id).lean();

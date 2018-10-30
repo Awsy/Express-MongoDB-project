@@ -7,6 +7,12 @@ export class Parents {
         };
     }
 
+    async readParents() {
+        const collection = await this.model.parents.readParents();
+
+        return collection;
+    }
+
     async readParentById() {
         const document = await this.model.parents.readParentById();
 

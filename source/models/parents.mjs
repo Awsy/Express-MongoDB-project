@@ -5,6 +5,12 @@ export class Parents {
         this.data = data;
     }
 
+    async readParents() {
+        const parentsColl = await parents.find();
+
+        return parentsColl;
+    }
+
     async readParentById() {
         const id = this.data;
         const document = await parents.findById(id).lean();

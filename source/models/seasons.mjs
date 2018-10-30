@@ -5,6 +5,12 @@ export class Seasons {
         this.data = data;
     }
 
+    async readSeasons() {
+        const seasonsColl = await seasons.find();
+
+        return seasonsColl;
+    }
+
     async readSeasonById() {
         const id = this.data;
         const document = await seasons.findById(id).lean();
