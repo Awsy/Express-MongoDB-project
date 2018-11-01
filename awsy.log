@@ -2,3 +2,35 @@
 {"message":"{}","level":"info"}
 {"message":"2018-10-29 12:44:54:270 method: GET - path: /teachers","level":"info"}
 {"message":"{}","level":"info"}
+{"message":"2018-10-31 13:57:45:786 method: POST - path: /staff","level":"info"}
+{"message":"{\n  \"email\": \"aws@mail.com\",\n  \"password\": \"123456\"\n}","level":"info"}
+{"message":"2018-10-31 13:59:00:836 method: POST - path: /staff","level":"info"}
+{"message":"{\n  \"email\": \"aws@mail.com\",\n  \"password\": \"123456\"\n}","level":"info"}
+{"message":"2018-10-31 14:02:26:325 method: POST - path: /staff","level":"info"}
+{"message":"{\n  \"email\": \"awsy@mail.com\",\n  \"password\": \"123456\"\n}","level":"info"}
+{"message":"2018-10-31 14:02:51:291 method: POST - path: /staff","level":"info"}
+{"message":"{\n  \"email\": \"awsyy@mail.com\",\n  \"password\": \"123456\"\n}","level":"info"}
+{"message":"2018-10-31 14:04:14:843 method: POST - path: /staff","level":"info"}
+{"message":"{\n  \"email\": \"awsyy@mail.com\",\n  \"password\": \"123456\"\n}","level":"info"}
+{"message":"2018-10-31 14:05:14:814 method: POST - path: /staff","level":"info"}
+{"message":"{\n  \"email\": \"awsyy@mail.com\",\n  \"password\": \"123456\"\n}","level":"info"}
+{"message":"2018-10-31 14:05:29:415 method: POST - path: /staff","level":"info"}
+{"message":"{\n  \"email\": \"awsy@mail.com\",\n  \"password\": \"123456\"\n}","level":"info"}
+{"message":"2018-10-31 14:15:30:833 method: GET - path: /staff/login","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-10-31 14:25:05:838 method: POST - path: /teachers","level":"info"}
+{"message":"{\n  \"hash\": \"14iisroo\",\n  \"name\": {\n    \"first\": \"aws\",\n    \"last\": \"shka\"\n  },\n  \"sex\": \"male\"\n}","level":"info"}
+{"message":"2018-10-31 14:25:14:893 method: POST - path: /teachers","level":"info"}
+{"message":"{\n  \"hash\": \"14iisroo\",\n  \"name\": {\n    \"first\": \"aws\",\n    \"last\": \"shka\"\n  },\n  \"sex\": \"male\"\n}","level":"info"}
+{"message":"2018-10-31 14:25:46:269 method: POST - path: /teachers","level":"info"}
+{"message":"{\n  \"hash\": \"14iisroo\",\n  \"name\": {\n    \"first\": \"aws\",\n    \"last\": \"shka\"\n  },\n  \"image\": \"fefewf\",\n  \"sex\": \"m\"\n}","level":"info"}
+{"message":"2018-10-31 14:26:54:522 method: POST - path: /teachers","level":"info"}
+{"message":"{\n  \"hash\": \"14iisroo\",\n  \"name\": {\n    \"first\": \"aws\",\n    \"last\": \"shka\"\n  },\n  \"image\": \"fefewf\",\n  \"sex\": \"m\"\n}","level":"info"}
+{"message":"2018-10-31 14:27:05:215 method: POST - path: /teachers","level":"info"}
+{"message":"{\n  \"hash\": \"14iisroo\",\n  \"name\": {\n    \"first\": \"aws\",\n    \"last\": \"shka\"\n  },\n  \"image\": \"fefewf\",\n  \"sex\": \"m\"\n}","level":"info"}
+{"message":"2018-10-31 14:27:54:773 method: POST - path: /teachers","level":"info"}
+{"message":"{\n  \"hash\": \"14iisroo\",\n  \"name\": {\n    \"first\": \"aws\",\n    \"last\": \"shka\"\n  },\n  \"image\": \"fefewf\",\n  \"sex\": \"m\"\n}","level":"info"}
+{"message":"2018-10-31 14:28:10:099 method: POST - path: /teachers","level":"info"}
+{"message":"{\n  \"hash\": \"14iisroo\",\n  \"name\": {\n    \"first\": \"aws\",\n    \"last\": \"shka\"\n  },\n  \"image\": \"fefewf\",\n  \"sex\": \"m\"\n}","level":"info"}
+{"message":"2018-10-31 14:28:30:258 method: POST - path: /teachers","level":"info"}
+{"message":"{\n  \"hash\": \"14iisroo\",\n  \"name\": {\n    \"first\": \"aws\",\n    \"last\": \"shka\"\n  },\n  \"image\": \"fefewf\",\n  \"sex\": \"m\"\n}","level":"info"}

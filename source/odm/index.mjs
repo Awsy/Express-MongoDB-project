@@ -6,6 +6,7 @@ import parents from './parents';
 import lessons from './lessons';
 import classes from './classes';
 import gradebook from './gradebook';
+import staff from './staff';
 
 
 export {
@@ -17,4 +18,5 @@ export {
     lessons,
     classes,
     gradebook,
+    staff,
 };

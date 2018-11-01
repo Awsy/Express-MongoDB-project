@@ -5,7 +5,7 @@ import dg from 'debug';
 import { lastModif } from '../helpers';
 mongoose.plugin(lastModif, { index: true });
 
-const debugDb = dg('db:connect');
+const debugDb = dg('awsy:db:connect');
 mongoose.Promise = global.Promise;
 
 const mongooseOptions = {

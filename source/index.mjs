@@ -8,7 +8,7 @@ import dg from 'debug';
 
 // Instruments
 import './db';
-import { teachers, subjects, pupils, parents, classes } from './routers';
+import { teachers, subjects, pupils, parents, classes, staff } from './routers';
 import { openApiDocument } from './helpers';
 
 const port = process.env.PORT || 3000;
@@ -27,7 +27,7 @@ const logger = winston.createLogger({
 });
 
 if (process.env.NODE_ENV === 'development') {
-    logger.add(new winston.transports.File({filename: 'awsy.log'}));
+    logger.add(new winston.transports.File({ filename: 'awsy.log' }));
 }
 
 // Middleware
@@ -51,6 +51,7 @@ app.use('/subjects', subjects);
 app.use('/pupils', pupils);
 app.use('/parents', parents);
 app.use('/classes', classes);
+app.use('/staff', staff);
 
 // Serve documentation
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiDocument));

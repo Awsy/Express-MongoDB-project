@@ -1373,8 +1373,8 @@ components:
                 
         sex: 
           type: string
-          enum: [male, female]
-          example: female
+          enum: [m, f]
+          example: f
           
         social:
           type: object
