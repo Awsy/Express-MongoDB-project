@@ -34,7 +34,7 @@ router.get('/login', [ limiter ], async (req, res) => {
     }
 });
 
-router.post('/', [ limiter ], async (req, res) => {
+router.post('/', [ limiter, validator.validate('post', '/staff') ], async (req, res) => {
     try {
         const staff = new Staff(req.body);
         const customer = await staff.create();
