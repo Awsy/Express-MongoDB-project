@@ -11,7 +11,7 @@ export class Staff {
     }
 
     async create() {
-        const hash = bcrypt.hashSync(this.data.password, 11);
+        const hash = bcrypt.hash(this.data.password, 11);
         this.data.password = hash;
         const { _id: id } = await staff.create(this.data);
 
