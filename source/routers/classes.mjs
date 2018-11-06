@@ -4,10 +4,9 @@ import rateLimit from 'express-rate-limit';
 import dg from 'debug';
 
 //Instruments
-import { authentication } from '../helpers';
+import { authentication, authenticationCookie, validator } from '../helpers';
 import { Classes } from '../controllers';
 import { Gradebook } from '../controllers';
-import { validator } from '../helpers';
 
 const debug = dg('router:teachers');
 const router = express.Router();
@@ -17,7 +16,7 @@ const limiter = rateLimit({
     headers:  false, // do not send custom rate limit header with limit and remaining
 });
 
-router.get('/', [ limiter, validator.validate('get', '/classes') ], async (req, res) => {
+router.get('/', [ limiter, authenticationCookie, validator.validate('get', '/classes') ], async (req, res) => {
     try {
         const classes = new Classes();
         const classesColl = await classes.readSubjects();
@@ -153,7 +152,7 @@ router.delete(
 
 router.get(
     '/:classId/gradebook',
-    [ limiter, validator.validate('get', '/classes/{classId}/gradebook') ],
+    [ limiter, authenticationCookie, validator.validate('get', '/classes/{classId}/gradebook') ],
     async (req, res) => {
         try {
             const gradebook = new Gradebook();

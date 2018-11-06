@@ -4,11 +4,11 @@ import rateLimit from 'express-rate-limit';
 import dg from 'debug';
 
 //Instruments
-import { authentication } from '../helpers';
+import { authentication, authenticationCookie, validator } from '../helpers';
 import { Subjects } from '../controllers';
 import { Seasons } from '../controllers';
 import { Lessons } from '../controllers';
-import { validator } from '../helpers';
+
 
 const debug = dg('router:subjects');
 const router = express.Router();
@@ -19,7 +19,7 @@ const limiter = rateLimit({
     headers:  false, // do not send custom rate limit header with limit and remaining
 });
 
-router.get('/', [ limiter, validator.validate('get', '/subjects') ], async (req, res) => {
+router.get('/', [ limiter, authenticationCookie, validator.validate('get', '/subjects') ], async (req, res) => {
     try {
         const subjects = new Subjects();
         const subjectsColl = await subjects.readSubjects();
@@ -160,7 +160,7 @@ router.delete(
 //---------> seasons collection
 router.get(
     '/:subjectId/seasons',
-    [ limiter, validator.validate('get', '/subjects/{subjectId}/seasons') ], //i need to add the route name in the beginning of the route validation route
+    [ limiter, authenticationCookie, validator.validate('get', '/subjects/{subjectId}/seasons') ], //i need to add the route name in the beginning of the route validation route
     async (req, res) => {
         try {
             const seasons = new Seasons();
@@ -310,7 +310,7 @@ router.delete(
 
 router.get(
     '/:subjectId/seasons/:seasonId/lessons',
-    [ limiter, validator.validate('get', '/subjects/{subjectId}/seasons/{seasonId}/lessons') ],
+    [ limiter, authenticationCookie, validator.validate('get', '/subjects/{subjectId}/seasons/{seasonId}/lessons') ],
     async (req, res) => {
         try {
             const lessons = new Lessons();

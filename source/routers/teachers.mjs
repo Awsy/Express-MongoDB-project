@@ -4,9 +4,8 @@ import rateLimit from 'express-rate-limit';
 import dg from 'debug';
 
 // Instruments
-import { authentication } from '../helpers';
+import { authentication, authenticationCookie, validator } from '../helpers';
 import { Teachers } from '../controllers';
-import { validator } from '../helpers';
 
 const debug = dg('awsy:router:teachers');
 const router = express.Router();
@@ -16,11 +15,13 @@ const limiter = rateLimit({
     headers:  false, // do not send custom rate limit header with limit and remaining
 });
 
-router.get('/', [ limiter, validator.validate('get', '/teachers') ], async (req, res) => {
+router.get('/', [ limiter, authenticationCookie, validator.validate('get', '/teachers') ], async (req, res) => {
     try {
         const teachers = new Teachers();
         const teachersColl = await teachers.readTeachers();
         debug(`teachers: ${JSON.stringify(teachersColl)}`);
+
+        //req.session.info = '123456'; //JSON.stringify(teachersColl);
         res.json(teachersColl);
     } catch (error) {
         debug(error.message);

@@ -13,6 +13,8 @@ paths:
       summary: returns teachers collection
       tags: 
         - teachers
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: displays teachers collection successfully
@@ -26,6 +28,8 @@ paths:
           description: server not found
     post:
       summary: inserting changes and data
+      tags: # starting from here
+        - teachers
       requestBody:
         required: true
         content: 
@@ -43,6 +47,8 @@ paths:
                   type: object
     put:
       summary: editing data
+      tags: 
+        - teachers
       requestBody:
         required: true
         content: 
@@ -58,6 +64,8 @@ paths:
                 $ref: '#/components/schemas/Teacher'
     delete:
       summary: data was removed
+      tags: 
+        - teachers
       responses:
         '200':
           description: data was removed successfully
@@ -69,6 +77,8 @@ paths:
   /teachers/{teacherId}:
     get:
       summary: returns teachers Id
+      tags: 
+        - teacherID
       parameters: 
         - name: teacherId
           in: path
@@ -89,6 +99,8 @@ paths:
           
     post:
       summary: input data and changes
+      tags: 
+        - teacherID
       parameters: 
         - name: teacherId
           in: path
@@ -109,6 +121,8 @@ paths:
           
     put:
       summary: applies modifications and changes
+      tags: 
+        - teacherID
       parameters: 
         - name: teacherId
           in: path
@@ -131,6 +145,8 @@ paths:
           
     delete:
       summary: returns something
+      tags: 
+        - teacherID
       parameters: 
         - name: teacherId
           in: path
@@ -149,6 +165,8 @@ paths:
   /subjects:
     get:
       summary: returns subjects collection
+      tags: 
+        - subjects
       responses:
         '200':
           description: displays subjects collection successfully
@@ -159,12 +177,14 @@ paths:
     
     post:
       summary: inserting changes and data
+      tags: 
+        - subjects
       requestBody:
         required: true
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Subject'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -176,21 +196,25 @@ paths:
                   type: object
     put:
       summary: editing data
+      tags: 
+        - subjects
       requestBody:
         required: true
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Subject'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Teacher'
+                $ref: '#/components/schemas/Subject'
     delete:
       summary: data was removed
+      tags: 
+        - subjects
       responses:
         '200':
           description: data was removed successfully
@@ -200,6 +224,8 @@ paths:
   /subjects/{subjectId}:
     get:
       summary: returns subjectId Id
+      tags: 
+        - subjectID
       parameters: 
         - name: subjectId
           in: path
@@ -220,6 +246,8 @@ paths:
           
     post:
       summary: input data and changes
+      tags: 
+        - subjectID
       parameters: 
         - name: subjectId
           in: path
@@ -240,6 +268,8 @@ paths:
           
     put:
       summary: applies modifications and changes
+      tags: 
+        - subjectID
       parameters: 
         - name: subjectId
           in: path
@@ -262,6 +292,8 @@ paths:
           
     delete:
       summary: returns something
+      tags: 
+        - subjectID
       parameters: 
         - name: subjectId
           in: path
@@ -281,6 +313,8 @@ paths:
   /subjects/{subjectId}/seasons:
     get:
       summary: returns seasons collection
+      tags: 
+        - seasons
       parameters: 
         - name: subjectId
           in: path
@@ -296,6 +330,8 @@ paths:
           description: server not found
     post:
       summary: inserting changes and data
+      tags: 
+        - seasons
       parameters: 
         - name: subjectId
           in: path
@@ -307,7 +343,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Season'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -319,6 +355,8 @@ paths:
                   type: object
     put:
       summary: editing data
+      tags: 
+        - seasons
       parameters: 
         - name: subjectId
           in: path
@@ -330,16 +368,18 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Season'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Teacher'
+                $ref: '#/components/schemas/Season'
     delete:
       summary: data was removed
+      tags: 
+        - seasons
       parameters: 
         - name: subjectId
           in: path
@@ -355,6 +395,8 @@ paths:
   /subjects/{subjectId}/seasons/{seasonId}:
     get:
       summary: returns seasonId Id
+      tags: 
+        - seasonID
       parameters: 
         - name: subjectId
           in: path
@@ -380,6 +422,8 @@ paths:
           
     post:
       summary: input data and changes
+      tags: 
+        - seasonID
       parameters: 
         - name: subjectId
           in: path
@@ -405,6 +449,8 @@ paths:
           
     put:
       summary: applies modifications and changes
+      tags: 
+        - seasonID
       parameters: 
         - name: subjectId
           in: path
@@ -432,7 +478,8 @@ paths:
           
     delete:
       summary: removes season Id
-      #need to add the below parameters to the rest of the paths
+      tags: 
+        - seasonID
       parameters: 
         - name: subjectId
           in: path
@@ -457,6 +504,8 @@ paths:
   /subjects/{subjectId}/seasons/{seasonId}/lessons:
     get:
       summary: returns lessons collection
+      tags: 
+        - lessons
       parameters: 
         - name: subjectId
           in: path
@@ -478,6 +527,8 @@ paths:
     
     post:
       summary: inserting changes and data
+      tags: 
+        - lessons
       parameters: 
         - name: subjectId
           in: path
@@ -494,7 +545,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Lesson'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -506,6 +557,8 @@ paths:
                   type: object
     put:
       summary: editing data
+      tags: 
+        - lessons
       parameters: 
         - name: subjectId
           in: path
@@ -522,16 +575,18 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Lesson'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Teacher'
+                $ref: '#/components/schemas/Lesson'
     delete:
       summary: data was removed
+      tags: 
+        - lessons
       parameters: 
         - name: subjectId
           in: path
@@ -552,6 +607,8 @@ paths:
   /subjects/{subjectId}/seasons/{seasonId}/lessons/{lessonId}:
     get:
       summary: returns lessonId Id
+      tags: 
+        - lessonId
       parameters: 
         - name: subjectId
           in: path
@@ -582,6 +639,8 @@ paths:
           
     post:
       summary: input data and changes
+      tags: 
+        - lessonId
       parameters: 
         - name: subjectId
           in: path
@@ -612,6 +671,8 @@ paths:
           
     put:
       summary: applies modifications and changes
+      tags: 
+        - lessonId
       parameters: 
         - name: subjectId
           in: path
@@ -644,6 +705,8 @@ paths:
           
     delete:
       summary: removes season Id
+      tags: 
+        - lessonId
       parameters: 
         - name: subjectId
           in: path
@@ -673,6 +736,8 @@ paths:
   /pupils:
     get:
       summary: returns pupils collection
+      tags: 
+        - pupils
       responses:
         '200':
           description: displays pupils collection successfully
@@ -682,12 +747,14 @@ paths:
           description: server not found
     post:
       summary: inserting changes and data
+      tags: 
+        - pupils
       requestBody:
         required: true
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Person'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -699,21 +766,25 @@ paths:
                   type: object
     put:
       summary: editing data
+      tags: 
+        - pupils
       requestBody:
         required: true
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Person'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Teacher'
+                $ref: '#/components/schemas/Person'
     delete:
       summary: data was removed
+      tags: 
+        - pupils
       responses:
         '200':
           description: data was removed successfully
@@ -725,6 +796,8 @@ paths:
   /pupils/{personId}:
     get:
       summary: returns personId Id
+      tags: 
+        - personId
       parameters: 
         - name: personId
           in: path
@@ -745,6 +818,8 @@ paths:
           
     post:
       summary: input data and changes
+      tags: 
+        - personId
       parameters: 
         - name: personId
           in: path
@@ -765,6 +840,8 @@ paths:
           
     put:
       summary: applies modifications and changes
+      tags: 
+        - personId
       parameters: 
         - name: personId
           in: path
@@ -787,6 +864,8 @@ paths:
           
     delete:
       summary: removes season Id
+      tags: 
+        - personId
       parameters: 
         - name: personId
           in: path
@@ -806,6 +885,8 @@ paths:
   /parents:
     get:
       summary: returns parents collection
+      tags: 
+        - parents
       responses:
         '200':
           description: displays parents collection successfully
@@ -815,12 +896,14 @@ paths:
           description: server not found
     post:
       summary: inserting changes and data
+      tags: 
+        - parents
       requestBody:
         required: true
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Parent'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -832,21 +915,25 @@ paths:
                   type: object
     put:
       summary: editing data
+      tags: 
+        - parents
       requestBody:
         required: true
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Parent'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Teacher'
+                $ref: '#/components/schemas/Parent'
     delete:
       summary: data was removed
+      tags: 
+        - parents
       responses:
         '200':
           description: data was removed successfully
@@ -856,6 +943,8 @@ paths:
   /parents/{parentId}:
     get:
       summary: returns parentId Id
+      tags: 
+        - parentId
       parameters: 
         - name: parentId
           in: path
@@ -876,6 +965,8 @@ paths:
           
     post:
       summary: input data and changes
+      tags: 
+        - parentId
       parameters: 
         - name: parentId
           in: path
@@ -896,6 +987,8 @@ paths:
           
     put:
       summary: applies modifications and changes
+      tags: 
+        - parentId
       parameters: 
         - name: parentId
           in: path
@@ -918,6 +1011,8 @@ paths:
           
     delete:
       summary: removes parent Id
+      tags: 
+        - parentId
       parameters: 
         - name: parentId
           in: path
@@ -937,6 +1032,8 @@ paths:
   /parents/{parentId}/pupils:
     get:
       summary: returns pupils collection
+      tags: 
+        - pupils
       parameters: 
         - name: parentId
           in: path
@@ -952,6 +1049,8 @@ paths:
           description: server not found
     post:
       summary: inserting changes and data
+      tags: 
+        - pupils
       parameters: 
         - name: parentId
           in: path
@@ -963,7 +1062,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Person'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -975,6 +1074,8 @@ paths:
                   type: object
     put:
       summary: editing data
+      tags: 
+        - pupils
       parameters: 
         - name: parentId
           in: path
@@ -986,16 +1087,18 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Person'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Teacher'
+                $ref: '#/components/schemas/Person'
     delete:
       summary: data was removed
+      tags: 
+        - pupils
       parameters: 
         - name: parentId
           in: path
@@ -1013,6 +1116,8 @@ paths:
   /parents/{parentId}/pupils/{personId}:
     get:
       summary: returns personId Id
+      tags: 
+        - personId
       parameters: 
         - name: parentId
           in: path
@@ -1039,6 +1144,8 @@ paths:
           
     post:
       summary: input data and changes
+      tags: 
+        - personId
       parameters: 
         - name: parentId
           in: path
@@ -1064,6 +1171,8 @@ paths:
           
     put:
       summary: applies modifications and changes
+      tags: 
+        - personId
       parameters: 
         - name: parentId
           in: path
@@ -1091,6 +1200,8 @@ paths:
           
     delete:
       summary: removes season Id
+      tags: 
+        - personId
       parameters: 
         - name: parentId
           in: path
@@ -1116,6 +1227,8 @@ paths:
   /classes:
     get:
       summary: returns classes collection
+      tags: 
+        - classes
       responses:
         '200':
           description: displays classes collection successfully
@@ -1125,12 +1238,14 @@ paths:
           description: server not found
     post:
       summary: inserting changes and data
+      tags: 
+        - classes
       requestBody:
         required: true
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Class'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -1142,21 +1257,25 @@ paths:
                   type: object
     put:
       summary: editing data
+      tags: 
+        - classes
       requestBody:
         required: true
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Class'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Teacher'
+                $ref: '#/components/schemas/Class'
     delete:
       summary: data was removed
+      tags: 
+        - classes
       responses:
         '200':
           description: data was removed successfully
@@ -1166,6 +1285,8 @@ paths:
   /classes/{classId}:
     get:
       summary: returns classId Id
+      tags: 
+        - classId
       parameters: 
         - name: classId
           in: path
@@ -1186,6 +1307,8 @@ paths:
           
     post:
       summary: input data and changes
+      tags: 
+        - classId
       parameters: 
         - name: classId
           in: path
@@ -1206,6 +1329,8 @@ paths:
           
     put:
       summary: applies modifications and changes
+      tags: 
+        - classId
       parameters: 
         - name: classId
           in: path
@@ -1228,6 +1353,8 @@ paths:
           
     delete:
       summary: removes class Id
+      tags: 
+        - classId
       parameters: 
         - name: classId
           in: path
@@ -1247,6 +1374,8 @@ paths:
   /classes/{classId}/gradebook:
     get:
       summary: returns gradebook collection
+      tags: 
+        - gradebook
       parameters: 
         - name: classId
           in: path
@@ -1262,6 +1391,8 @@ paths:
           description: server not found
     post:
       summary: inserting changes and data
+      tags: 
+        - gradebook
       parameters: 
         - name: classId
           in: path
@@ -1273,7 +1404,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Gradebook'
       responses:
         '200':
           description: changes were implemented successfully 
@@ -1285,6 +1416,8 @@ paths:
                   type: object
     put:
       summary: editing data
+      tags: 
+        - gradebook
       parameters: 
         - name: classId
           in: path
@@ -1296,16 +1429,18 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: '#/components/schemas/Teacher'
+              $ref: '#/components/schemas/Gradebook'
       responses:
         '200':
           description: changes are saved
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Teacher'
+                $ref: '#/components/schemas/Gradebook'
     delete:
       summary: data was removed
+      tags: 
+        - gradebook
       parameters: 
         - name: classId
           in: path
@@ -1321,11 +1456,14 @@ paths:
 #------------ here we start building the component   
           
 components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     Teacher:
       type: object
-      required:
-        - hash
       properties: 
         hash: 
           type: string
@@ -1373,8 +1511,8 @@ components:
                 
         sex: 
           type: string
-          enum: [m, f]
-          example: f
+          enum: [male, female]
+          example: female
           
         social:
           type: object
@@ -1414,8 +1552,7 @@ components:
           type: string
           format: date
           example: 17/09/2018
-     
-    subject:
+    Subject:
       type: object
       properties:
         hash: 
@@ -1444,7 +1581,7 @@ components:
           type: string
           format: date
           example: 17/09/2018
-    season:
+    Season:
       type: object
       properties:
         hash:
@@ -1480,8 +1617,7 @@ components:
           type: string
           format: date
           example: 18/09/2018
-          
-    lesson:
+    Lesson:
       type: object
       properties:
         hash:
@@ -1508,8 +1644,7 @@ components:
           type: string
           format: date
           example: 18/09/2018
-          
-    person:
+    Person:
       type: object
       properties:
         hash:
@@ -1596,8 +1731,7 @@ components:
           type: string
           format: date
           example: 18/09/2018 
-          
-    parent:
+    Parent:
       type: object
       properties:
         hash:
@@ -1681,7 +1815,7 @@ components:
           type: string
           format: date
           example: 18/09/2018
-    class:
+    Class:
       type: object
       properties:
         hash:
@@ -1719,7 +1853,7 @@ components:
           type: string
           format: date
           example: 18/09/2018 
-    gradebook:
+    Gradebook:
       type: object
       properties:
         hash:
@@ -1743,7 +1877,7 @@ components:
             properties:
               personHash:
                 type: string
-                example: Teacher123
+                example: user123
               teacherHash:
                 type: string
                 example: teacher12
@@ -1770,7 +1904,3 @@ components:
           type: string
           format: date
           example: 18/09/2018         
-  securitySchemes:
-    BasicAuth:
-      type: http
-      scheme: basic

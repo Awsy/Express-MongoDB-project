@@ -5,6 +5,9 @@ import express from 'express';
 import winston from 'winston';
 import swaggerUi from 'swagger-ui-express';
 import dg from 'debug';
+import session from 'express-session';
+import v4 from 'uuid/v4';
+import cookieParser from 'cookie-parser';
 
 // Instruments
 import './db';
@@ -30,7 +33,21 @@ if (process.env.NODE_ENV === 'development') {
     logger.add(new winston.transports.File({ filename: 'awsy.log' }));
 }
 
+const sessionOptions = {
+    key:               'info',
+    secret:            v4(),
+    resave:            false,
+    rolling:           true,
+    saveUninitialized: false,
+    cookie:            {
+        httpOnly: true,
+        maxAge:   15 * 60 * 1000,
+    },
+};
+
 // Middleware
+app.use(session(sessionOptions));
+app.use(cookieParser());
 app.use(express.json());
 app.use(helmet()); // using Helmet middleware for app security
 app.use((req, res, next) => {
@@ -63,4 +80,7 @@ app.use((error, req, res, next) => {
 
 app.listen(port, () => {
     debugSrv(`server API is up on port ${port}`);
+    if (process.env.NODE_ENV) {
+        logger.info(`Server started in: ${process.env.NODE_ENV} mode.`);
+    }
 });

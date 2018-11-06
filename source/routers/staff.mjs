@@ -23,6 +23,7 @@ router.get('/login', [ limiter ], async (req, res) => {
             .split(':');
         const staff = new Staff({ email, password });
         const customer = await staff.login();
+        req.session.info = '123456';
         debug(`subjects: ${JSON.stringify(customer)}`);
         res.status(200).json(customer);
     } catch ({ message }) {

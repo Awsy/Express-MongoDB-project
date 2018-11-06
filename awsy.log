@@ -34,3 +34,51 @@
 {"message":"{\n  \"hash\": \"14iisroo\",\n  \"name\": {\n    \"first\": \"aws\",\n    \"last\": \"shka\"\n  },\n  \"image\": \"fefewf\",\n  \"sex\": \"m\"\n}","level":"info"}
 {"message":"2018-10-31 14:28:30:258 method: POST - path: /teachers","level":"info"}
 {"message":"{\n  \"hash\": \"14iisroo\",\n  \"name\": {\n    \"first\": \"aws\",\n    \"last\": \"shka\"\n  },\n  \"image\": \"fefewf\",\n  \"sex\": \"m\"\n}","level":"info"}
+{"message":"2018-11-02 13:37:25:280 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:37:39:459 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:37:52:328 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:38:52:653 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:39:17:783 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:40:01:153 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:40:23:832 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:40:41:043 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:40:57:524 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:41:31:599 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:43:52:434 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:44:02:295 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:45:21:443 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:45:22:505 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:52:22:463 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:52:42:032 method: GET - path: /staff/login","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:53:20:350 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-02 13:54:34:170 method: GET - path: /teachers","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}

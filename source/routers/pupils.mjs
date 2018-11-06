@@ -2,9 +2,8 @@ import express from 'express';
 import rateLimit from 'express-rate-limit';
 import dg from 'debug';
 
-import { authentication } from '../helpers';
+import { authentication, authenticationCookie, validator } from '../helpers';
 import { Persons } from '../controllers';
-import { validator } from '../helpers';
 
 const debug = dg('router:persons');
 const router = express.Router();
@@ -14,7 +13,7 @@ const limiter = rateLimit({
     headers:  false, // do not send custom rate limit header with limit and remaining
 });
 
-router.get('/', [ limiter, validator.validate('get', '/pupils') ], async (req, res) => {
+router.get('/', [ limiter, authenticationCookie, validator.validate('get', '/pupils') ], async (req, res) => {
     try {
         const persons = new Persons();
         const personsColl = await persons.readSubjects();

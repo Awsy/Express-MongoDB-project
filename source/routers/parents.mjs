@@ -4,10 +4,9 @@ import rateLimit from 'express-rate-limit';
 import dg from 'debug';
 
 //Instruments
-import { authentication } from '../helpers';
+import { authentication, authenticationCookie, validator } from '../helpers';
 import { Parents } from '../controllers';
 import { Persons } from '../controllers';
-import { validator } from '../helpers';
 
 const debug = dg('router:parents');
 const router = express.Router();
@@ -18,19 +17,23 @@ const limiter = rateLimit({
     headers:  false, // do not send custom rate limit header with limit and remaining
 });
 
-router.get('/', [ limiter, validator.validate('get', '/parents') ], async (req, res) => {
-    try {
-        const parents = new Parents();
-        const parentsColl = await parents.readSubjects();
-        debug(`subjects: ${JSON.stringify(parentsColl)}`);
-        res.json(parentsColl);
-    } catch (error) {
-        debug(error.message);
-        res.status(400).json({
-            message: error.message,
-        });
-    }
-});
+router.get(
+    '/',
+    [ limiter, authenticationCookie, validator.validate('get', '/parents') ],
+    async (req, res) => {
+        try {
+            const parents = new Parents();
+            const parentsColl = await parents.readSubjects();
+            debug(`subjects: ${JSON.stringify(parentsColl)}`);
+            res.json(parentsColl);
+        } catch (error) {
+            debug(error.message);
+            res.status(400).json({
+                message: error.message,
+            });
+        }
+    },
+);
 
 router.post(
     '/',
@@ -155,7 +158,7 @@ router.delete(
 //----------> pupils collection
 router.get(
     '/:parentId/pupils',
-    [ limiter, validator.validate('get', '/parents/{parentId}/pupils') ],
+    [ limiter, authenticationCookie, validator.validate('get', '/parents/{parentId}/pupils') ],
     async (req, res) => {
         try {
             const persons = new Persons();
