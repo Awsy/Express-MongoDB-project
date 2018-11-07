@@ -6,7 +6,7 @@ import dg from 'debug';
 //Instruments
 import { Staff } from '../controllers';
 
-// import { validator } from '../helpers';
+import { validator } from '../helpers';
 
 const debug = dg('router:staff');
 const router = express.Router();
@@ -37,7 +37,7 @@ router.get('/login', [ limiter ], async (req, res) => {
 
 router.post(
     '/',
-    [ limiter /*, validator.validate('post', '/staff')*/ ],
+    [ limiter, validator.validate('post', '/staff') ],
     async (req, res) => {
         try {
             const staff = new Staff(req.body);

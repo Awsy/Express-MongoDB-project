@@ -220,6 +220,39 @@ paths:
           description: data was removed successfully
         '404':
           description: data not found
+
+  /staff:
+    get:
+      summary: returns staff object
+      tags: 
+        - staff
+      responses:
+        '200':
+          description: staff object was successfully returned
+        '404':
+          description: staff object is not existed
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object
+          
+    post:
+      summary: input data and changes
+      tags: 
+        - staff
+      responses:
+        '200':
+          description: returns the success status if data insertion or changes were occurred
+        '404':
+          description: staff object was not found
+        '500':
+          description: servers not found
+          content:
+            application/json:
+              schema:
+                type: object        
       
   /subjects/{subjectId}:
     get:

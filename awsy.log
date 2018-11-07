@@ -95,3 +95,21 @@
 {"message":"Server started in: development mode.","level":"info"}
 {"message":"Server started in: development mode.","level":"info"}
 {"message":"Server started in: development mode.","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}
+{"message":"2018-11-07 11:32:33:763 method: GET - path: /docs","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-07 11:32:33:797 method: GET - path: /docs/","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-07 11:32:33:931 method: GET - path: /docs/swagger-ui.css","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-07 11:32:33:933 method: GET - path: /docs/swagger-ui-bundle.js","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-07 11:32:33:944 method: GET - path: /docs/swagger-ui-standalone-preset.js","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-07 11:32:33:949 method: GET - path: /docs/swagger-ui-init.js","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-07 11:32:35:766 method: GET - path: /docs/favicon-32x32.png","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"2018-11-07 11:32:35:784 method: GET - path: /docs/favicon-16x16.png","level":"info"}
+{"message":"{}","level":"info"}
+{"message":"Server started in: development mode.","level":"info"}

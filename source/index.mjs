@@ -6,8 +6,9 @@ import winston from 'winston';
 import swaggerUi from 'swagger-ui-express';
 import dg from 'debug';
 import session from 'express-session';
-import v4 from 'uuid/v4';
 import cookieParser from 'cookie-parser';
+import v4 from 'uuid/v4';
+
 
 // Instruments
 import './db';
