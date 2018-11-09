@@ -19,8 +19,7 @@ export class Classes {
     }
 
     async createClass() {
-        const data = this.data;
-        const document = await classes.create(data);
+        const document = await classes.create(this.data);
 
         return document;
     }

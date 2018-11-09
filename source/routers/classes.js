@@ -42,9 +42,11 @@ router.post(
             const classes = new Classes(req.body);
             const document = await classes.createClass();
             res.status(201).json(document);
-        } catch (error) {
+        } catch ({ message }) {
+            console.log(message);
+
             res.status(400).json({
-                message: error.message,
+                message,
             });
         }
     },

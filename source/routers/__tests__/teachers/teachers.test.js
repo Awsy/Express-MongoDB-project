@@ -10,33 +10,35 @@ const server = supertest(app);
 const key = Buffer.from('test@email.com:123456').toString('base64');
 
 const generateTeacher = () => ({
-    hash: faker.random.uuid(),
+    hash: faker.random.alphaNumeric(10),
     name: {
         first: faker.name.firstName(),
         last:  faker.name.lastName(),
     },
     image: faker.image.imageUrl(),
 });
+let cookie = '';
+let token = '';
 
 describe('teachers:', () => {
     beforeEach(async () => {
         await mockgoose.helper.reset();
         const staff = new Staff({ email: 'test@email.com', password: '123456' });
         await staff.create();
-    });
-
-    test('should create a new teacher', async () => {
         const res = await server
             .get('/staff/login')
             .set('authorization', `Basic ${key}`)
             .expect(200);
-        const { token } = res.body;
+        cookie = res.headers[ 'set-cookie' ].pop().split(';')[ 0 ];
+        ({ token } = res.body);
+    });
 
+    test('should create a new teacher', async () => {
         const data = await server
             .post('/teachers')
             .set('x-token', token)
             .send(generateTeacher())
-            .expect(200);
+            .expect(201);
 
         expect(typeof data.body.hash).toBe('string');
         expect(data.body.name.first).toBeDefined();
@@ -44,12 +46,6 @@ describe('teachers:', () => {
     });
 
     test('should get all teachers', async () => {
-        const res = await server
-            .get('/staff/login')
-            .set('authorization', `Basic ${key}`)
-            .expect(200);
-        const cookie = res.headers[ 'set-cookie' ].pop().split(';')[ 0 ];
-
         const data = await server
             .get('/teachers')
             .set('cookie', cookie)
@@ -61,11 +57,6 @@ describe('teachers:', () => {
     test('should return array with one teacher', async () => {
         const teachers = new Teachers(generateTeacher());
         await teachers.createTeacher();
-        const res = await server
-            .get('/staff/login')
-            .set('authorization', `Basic ${key}`)
-            .expect(200);
-        const cookie = res.headers[ 'set-cookie' ].pop().split(';')[ 0 ];
 
         const data = await server
             .get('/teachers')

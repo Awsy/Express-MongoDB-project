@@ -40,7 +40,7 @@ router.post(
         try {
             const teachers = new Teachers(req.body);
             const document = await teachers.createTeacher();
-            res.json(document);
+            res.status(201).json(document);
         } catch (error) {
             res.status(400).json({
                 message: error.message,
