@@ -22,6 +22,7 @@ router.get('/login', [ limiter ], async (req, res) => {
         const [ email, password ] = Buffer.from(auth, 'base64')
             .toString('ascii')
             .split(':');
+
         const staff = new Staff({ email, password });
         const customer = await staff.login();
         req.session.info = '123456';
@@ -29,26 +30,24 @@ router.get('/login', [ limiter ], async (req, res) => {
         res.status(200).json(customer);
     } catch ({ message }) {
         debug(message);
+        console.log(message);
+
         res.status(400).json({
             message,
         });
     }
 });
 
-router.post(
-    '/',
-    [ limiter, validator.validate('post', '/staff') ],
-    async (req, res) => {
-        try {
-            const staff = new Staff(req.body);
-            const customer = await staff.create();
-            res.status(201).json(customer);
-        } catch (error) {
-            res.status(400).json({
-                message: error.message,
-            });
-        }
-    },
-);
+router.post('/', [ limiter, validator.validate('post', '/staff') ], async (req, res) => {
+    try {
+        const staff = new Staff(req.body);
+        const customer = await staff.create();
+        res.status(201).json(customer);
+    } catch (error) {
+        res.status(400).json({
+            message: error.message,
+        });
+    }
+});
 
 export { router as staff };

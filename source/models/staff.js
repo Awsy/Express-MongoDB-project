@@ -11,7 +11,7 @@ export class Staff {
     }
 
     async create() {
-        const hash = bcrypt.hash(this.data.password, 11);
+        const hash = await bcrypt.hash(this.data.password, 11);
         this.data.password = hash;
         const { _id: id } = await staff.create(this.data);
 
@@ -20,9 +20,13 @@ export class Staff {
 
     async login() {
         const { email, password } = this.data;
-        const { password: hash } = await staff.findOne({ email }, { password: true }).lean();
+        const source = await staff.findOne({ email }, { password: true }).lean();
 
-        const check = await bcrypt.compare(password, hash);
+        if (!source) {
+            throw new Error('can not find right staff');
+        }
+
+        const check = await bcrypt.compare(password, source.password);
 
         if (!check) {
             throw new Error('password is not valid');

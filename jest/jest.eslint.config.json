@@ -2,9 +2,6 @@
     "runner": "jest-runner-eslint",
     "displayName": "lint:javascript",
     "rootDir": "../",
-    "moduleFileExtensions": ["js", "mjs"],
-    "testMatch": [
-        "<rootDir>/source/**/*.js",
-        "<rootDir>/source/**/*.mjs"
-    ]
+    "moduleFileExtensions": ["js"],
+    "testMatch": ["<rootDir>/source/**/*.js"]
 }

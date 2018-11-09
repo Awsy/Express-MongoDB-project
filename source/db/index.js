@@ -8,6 +8,8 @@ mongoose.plugin(lastModif, { index: true });
 const debugDb = dg('awsy:db:connect');
 mongoose.Promise = global.Promise;
 
+const { DB_USER = 'user', DB_PWD = '123456', DB_URI = '127.0.0.1' } = process.env;
+
 const mongooseOptions = {
     promiseLibrary:    global.Promise,
     poolSize:          10,
@@ -21,7 +23,7 @@ const mongooseOptions = {
 let firstConnectTimeout = null;
 const mongoConnect = () => {
     const mongoDB = mongoose.connect(
-        'mongodb://127.0.0.1:27017/school',
+        `mongodb+srv://${DB_USER}:${DB_PWD}@${DB_URI}/school?retryWrites=true`,
         mongooseOptions,
     );
 

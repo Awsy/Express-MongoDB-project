@@ -1501,7 +1501,7 @@ components:
         hash: 
           type: string
           minLength: 3
-          maxLength: 15
+          maxLength: 50
           example: "teacher"
         name:
           type: object

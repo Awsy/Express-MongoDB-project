@@ -3,7 +3,6 @@ import dg from 'debug';
 const debug = dg('awsy:auth:cookie');
 export const authenticationCookie = (req, res, next) => {
     const token = req.session.info;
-
     if (token === '123456') {
         debug('auth');
 

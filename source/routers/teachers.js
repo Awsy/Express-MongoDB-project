@@ -15,21 +15,23 @@ const limiter = rateLimit({
     headers:  false, // do not send custom rate limit header with limit and remaining
 });
 
-router.get('/', [ limiter, authenticationCookie, validator.validate('get', '/teachers') ], async (req, res) => {
-    try {
-        const teachers = new Teachers();
-        const teachersColl = await teachers.readTeachers();
-        debug(`teachers: ${JSON.stringify(teachersColl)}`);
-
-        //req.session.info = '123456'; //JSON.stringify(teachersColl);
-        res.json(teachersColl);
-    } catch (error) {
-        debug(error.message);
-        res.status(400).json({
-            message: error.message,
-        });
-    }
-});
+router.get(
+    '/',
+    [ limiter, authenticationCookie, validator.validate('get', '/teachers') ],
+    async (req, res) => {
+        try {
+            const teachers = new Teachers();
+            const teachersColl = await teachers.readTeachers();
+            debug(`teachers: ${JSON.stringify(teachersColl)}`);
+            res.json(teachersColl);
+        } catch (error) {
+            debug(error.message);
+            res.status(400).json({
+                message: error.message,
+            });
+        }
+    },
+);
 
 router.post(
     '/',
