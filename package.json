@@ -11,6 +11,9 @@
     "test": "jest --detectOpenHandles --no-cache --forceExit --verbose false --projects 'jest/jest.test.config.json'",
     "test:watch": "jest --watch --detectOpenHandles --no-cache --forceExit --verbose --projects 'jest/jest.test.config.json'"
   },
+  "engine": {
+    "node": "10.x"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.1.5",
@@ -31,7 +34,12 @@
     "jest-runner-eslint": "^0.6.0",
     "mockgoose": "^7.3.5",
     "nodemon": "^1.18.4",
-    "supertest": "^3.3.0"
+    "supertest": "^3.3.0",
+    "webpack": "^4.25.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.1.2",
+    "webpack-merge": "^4.1.4",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "bcrypt": "^3.0.2",
