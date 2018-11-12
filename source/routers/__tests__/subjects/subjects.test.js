@@ -4,19 +4,20 @@ import faker from 'faker';
 
 import { app } from '../../../server';
 import { mockgoose } from '../../../../mocks';
-import { Staff, Classes } from '../../../models';
+import { Staff, Subjects } from '../../../models';
 
 const server = supertest(app);
 const key = Buffer.from('test@email.com:123456').toString('base64');
 
-const generateClass = () => ({
+const generateSubject = () => ({
     hash:  faker.random.alphaNumeric(10),
+    title: faker.name.title(),
     image: faker.image.imageUrl(),
 });
 let cookie = '';
 let token = '';
 
-describe('classes:', () => {
+describe('subjects:', () => {
     beforeEach(async () => {
         await mockgoose.helper.reset();
         const staff = new Staff({ email: 'test@email.com', password: '123456' });
@@ -29,34 +30,58 @@ describe('classes:', () => {
         ({ token } = res.body);
     });
 
-    test('should create a new class', async () => {
+    test('should create a new subject', async () => {
         const data = await server
-            .post('/classes')
+            .post('/subjects')
             .set('x-token', token)
-            .send(generateClass())
+            .send(generateSubject())
             .expect(201);
 
         expect(typeof data.body.hash).toBe('string');
     });
 
-    test('should get all classes', async () => {
+    test('should get all subjects', async () => {
         const data = await server
-            .get('/classes')
+            .get('/subjects')
             .set('cookie', cookie)
             .expect(200);
 
         expect(Array.isArray(data.body)).toBeTruthy();
     });
 
-    test('should return array with one class', async () => {
-        const classes = new Classes(generateClass());
-        await classes.createClass();
+    test('should return array with one subject', async () => {
+        const subjects = new Subjects(generateSubject());
+        await subjects.createSubject();
 
         const data = await server
-            .get('/classes')
+            .get('/subjects')
             .set('cookie', cookie)
             .expect(200);
 
         expect(data.body).toHaveLength(1);
+    });
+
+    test('should return string as a type of subject title', async () => {
+        const subjects = new Subjects(generateSubject());
+        await subjects.createSubject();
+
+        const data = await server
+            .get('/subjects')
+            .set('cookie', cookie)
+            .expect(200);
+
+        expect(typeof data.body[ 0 ].title).toBe('string');
+    });
+
+    test('should return a defined title', async () => {
+        const subjects = new Subjects(generateSubject());
+        await subjects.createSubject();
+
+        const data = await server
+            .get('/subjects')
+            .set('cookie', cookie)
+            .expect(200);
+
+        expect(data.body[ 0 ].title).toBeDefined();
     });
 });

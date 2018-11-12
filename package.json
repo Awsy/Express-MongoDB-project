@@ -3,8 +3,11 @@
   "version": "0.0.8",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG='awsy:db:*,awsy:main:*,awsy:router:*,awsy:schema:*,awsy:auth' nodemon",
+    "start": "node build/index.js",
+    "start:dev": "DEBUG='awsy:db:*,awsy:main:*,awsy:router:*,awsy:schema:*,awsy:auth' nodemon",
     "lint:javascript": "jest --projects 'jest/jest.eslint.config.json'",
+    "build": "NODE_ENV=production node -r @babel/register './node_modules/.bin/webpack' --config=./webpack/webpack.config.js",
+    "heroku-postbuild": "npm run build",
     "test": "jest --detectOpenHandles --no-cache --forceExit --verbose false --projects 'jest/jest.test.config.json'",
     "test:watch": "jest --watch --detectOpenHandles --no-cache --forceExit --verbose --projects 'jest/jest.test.config.json'"
   },

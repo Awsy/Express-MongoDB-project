@@ -16,6 +16,7 @@ const limiter = rateLimit({
     headers:  false, // do not send custom rate limit header with limit and remaining
 });
 
+// login endpoint
 router.get('/login', [ limiter ], async (req, res) => {
     try {
         const auth = req.headers.authorization.split(' ')[ 1 ];
@@ -30,7 +31,6 @@ router.get('/login', [ limiter ], async (req, res) => {
         res.status(200).json(customer);
     } catch ({ message }) {
         debug(message);
-        console.log(message);
 
         res.status(400).json({
             message,
@@ -38,6 +38,7 @@ router.get('/login', [ limiter ], async (req, res) => {
     }
 });
 
+// registration endpoint
 router.post('/', [ limiter, validator.validate('post', '/staff') ], async (req, res) => {
     try {
         const staff = new Staff(req.body);
