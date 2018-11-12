@@ -1,9 +1,20 @@
 import mongoose from 'mongoose';
 import dg from 'debug';
+import winston from 'winston';
 
 //Plugin
 import { lastModif } from '../helpers';
 mongoose.plugin(lastModif, { index: true });
+
+// Winston config
+const logger = winston.createLogger({
+    level:      'info',
+    transports: [
+        new winston.transports.Console({
+            format: winston.format.simple(),
+        }),
+    ],
+});
 
 const debugDb = dg('awsy:db:connect');
 mongoose.Promise = global.Promise;
@@ -29,10 +40,16 @@ const mongoConnect = () => {
 
     mongoDB
         .then(() => {
+            if (process.env.NODE_ENV === 'production') {
+                logger.info('school has been connected');
+            }
             debugDb('school has been connected');
             clearTimeout(firstConnectTimeout);
         })
         .catch((error) => {
+            if (process.env.NODE_ENV === 'production') {
+                logger.info(error.message || error.error);
+            }
             debugDb(error);
             clearTimeout(firstConnectTimeout);
             firstConnectTimeout = setTimeout(mongoConnect, mongooseOptions.reconnectInterval);
